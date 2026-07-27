@@ -12,4 +12,11 @@ window.GRINGO_CONFIG = {
 
   // Taxa de entrega em reais.
   taxaEntrega: 7,
+
+  // Tempos médios do acompanhamento do pedido, em minutos a partir da
+  // confirmação. Calibre com a média real da pizzaria:
+  //  - preparando: quando o app passa a mostrar "Preparando no forno"
+  //  - saiu:       quando passa a mostrar "Saiu para entrega"
+  //  - entregue:   previsão de entrega exibida ("Chega em ~X min")
+  etaMinutos: { preparando: 5, saiu: 25, entregue: 40 },
 };

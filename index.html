@@ -820,7 +820,7 @@ class Component extends DCLogic {
   STATUS_LABEL = { recebido: "Pedido recebido", preparando: "Preparando no forno", saiu: "Saiu para entrega", entregue: "Entregue" };
   STATUS_DESC = { recebido: "Recebemos seu pedido e estamos confirmando.", preparando: "Nossos pizzaiolos estão montando sua pizza.", saiu: "Seu pedido está a caminho!", entregue: "Pedido finalizado. Bom apetite!" };
   STATUS_ICON = { recebido: "📝", preparando: "🍕", saiu: "🛵", entregue: "🏠" };
-  ETA = { recebido: 0, preparando: 5, saiu: 25, entregue: 40 };
+  ETA = Object.assign({ recebido: 0, preparando: 5, saiu: 25, entregue: 40 }, (window.GRINGO_CONFIG && window.GRINGO_CONFIG.etaMinutos) || {});
   FRASES_RECEBIDO = ["Imprimindo seu pedido na cozinha…", "Analisando seu pedido…", "Confirmando seu pedido…", "Separando os ingredientes…", "Avisando o pizzaiolo…"];
   FRASES_PREPARANDO = ["Abrindo a massa…", "Colocando molho de tomate…", "Colocando os ingredientes…", "Passando farinha…", "Colocando a pizza no forno…", "Embalando a pizza para entrega…"];
   FRASES_SAIU = ["Colocando a pizza na mochila…", "Saindo para entrega…", "A caminho do seu endereço…", "Quase chegando…"];

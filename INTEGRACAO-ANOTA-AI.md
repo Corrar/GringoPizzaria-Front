@@ -59,6 +59,11 @@ window.GRINGO_CONFIG = {
 
   // Taxa de entrega em reais.
   taxaEntrega: 7,
+
+  // Tempos médios do acompanhamento do pedido, em minutos a partir da
+  // confirmação (o app estima o status localmente — a Anota AI não
+  // precisa enviar nada). Calibre com a média real da pizzaria.
+  etaMinutos: { preparando: 5, saiu: 25, entregue: 40 },
 };
 ```
 
@@ -157,7 +162,9 @@ Faça um pedido real de teste, do celular, antes de divulgar:
 
 - O acompanhamento do pedido no app ("recebido → preparando → saiu → entregue") é
   uma **estimativa local por tempo**, não o status real do painel da Anota AI.
-  Status real exige a integração via API (abaixo).
+  Os tempos são configuráveis em `etaMinutos` no `config.js`; o "Entregue" só
+  acontece quando o próprio cliente toca em "Confirmar recebimento". Status real
+  exige a integração via API (abaixo).
 - O envio depende de o cliente concluir o envio da mensagem que o app abre no
   WhatsApp dele. Se ele fechar sem enviar, o pedido não chega (o app mantém o
   pedido na tela "Pedidos" do cliente, mas a pizzaria não recebe).
