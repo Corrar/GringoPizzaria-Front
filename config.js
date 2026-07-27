@@ -5,10 +5,14 @@ window.GRINGO_CONFIG = {
   // Ex.: "5511999999999"
   whatsapp: "",
 
-  // Opcional: URL de um webhook (ex.: fluxo no n8n ou integração com a API
-  // de parceiros da Anota AI) que recebe o pedido completo em JSON via POST.
-  // Deixe vazio ("") para desativar.
-  webhookPedidos: "",
+  // Hub de pedidos (n8n): recebe o pedido completo em JSON via POST e
+  // registra para acompanhamento. Deixe vazio ("") para desativar.
+  webhookPedidos: "https://n8n.fluxo-royale.com.br/webhook/gringo/pedido",
+
+  // Hub de pedidos (n8n): consulta de status real do pedido. Com esta URL
+  // preenchida, o acompanhamento usa o status marcado pela pizzaria em vez
+  // da estimativa por tempo. Deixe vazio ("") para voltar à estimativa.
+  statusUrl: "https://n8n.fluxo-royale.com.br/webhook/gringo/status",
 
   // Taxa de entrega em reais.
   taxaEntrega: 7,

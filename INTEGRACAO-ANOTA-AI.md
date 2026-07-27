@@ -53,16 +53,17 @@ window.GRINGO_CONFIG = {
   // É para este número que os pedidos serão enviados.
   whatsapp: "5511999999999",
 
-  // Opcional (deixe "" por enquanto): URL de webhook para integração
-  // direta via API — ver seção "Upgrade opcional" no fim deste guia.
-  webhookPedidos: "",
+  // Hub de pedidos (n8n) — registro do pedido e status real.
+  // Já configurado; deixe "" em ambos para desativar o hub e voltar
+  // ao modo somente-WhatsApp com estimativa por tempo.
+  webhookPedidos: "https://n8n.fluxo-royale.com.br/webhook/gringo/pedido",
+  statusUrl: "https://n8n.fluxo-royale.com.br/webhook/gringo/status",
 
   // Taxa de entrega em reais.
   taxaEntrega: 7,
 
-  // Tempos médios do acompanhamento do pedido, em minutos a partir da
-  // confirmação (o app estima o status localmente — a Anota AI não
-  // precisa enviar nada). Calibre com a média real da pizzaria.
+  // Tempos médios (minutos) usados como FALLBACK quando o hub está
+  // desativado ou o pedido não chegou a ser registrado nele.
   etaMinutos: { preparando: 5, saiu: 25, entregue: 40 },
 };
 ```
@@ -160,31 +161,54 @@ Faça um pedido real de teste, do celular, antes de divulgar:
 
 ## Limitações conhecidas
 
-- O acompanhamento do pedido no app ("recebido → preparando → saiu → entregue") é
-  uma **estimativa local por tempo**, não o status real do painel da Anota AI.
-  Os tempos são configuráveis em `etaMinutos` no `config.js`; o "Entregue" só
-  acontece quando o próprio cliente toca em "Confirmar recebimento". Status real
-  exige a integração via API (abaixo).
+- O acompanhamento no app usa o **status real marcado no Painel de Pedidos**
+  (ver seção do hub abaixo) para pedidos registrados no hub, com consulta a cada
+  15 s. Se o hub estiver desativado ou o registro falhar, o app cai no fallback
+  de **estimativa por tempo** (`etaMinutos` no `config.js`). O "Entregue" também
+  pode ser confirmado pelo próprio cliente no app.
+- O painel ainda não conversa sozinho com a Anota AI: a equipe precisa tocar em
+  "Aprovar" no painel quando confirmar o pedido no Anota AI. A sincronização
+  automática exige a API de parceiros (ver fim da seção do hub).
 - O envio depende de o cliente concluir o envio da mensagem que o app abre no
   WhatsApp dele. Se ele fechar sem enviar, o pedido não chega (o app mantém o
   pedido na tela "Pedidos" do cliente, mas a pizzaria não recebe).
 
-## Upgrade opcional — integração direta via API (sem WhatsApp)
+## Hub de pedidos (n8n) — status real no app do cliente
 
-Para o pedido cair **direto no painel da Anota AI** (e permitir status real):
+Já está **construído, publicado e ativo** no n8n (workflow "Gringo Pizzaria — Hub
+de Pedidos", `https://n8n.fluxo-royale.com.br/workflow/WvNMPLVlNU1m43ds`), com os
+pedidos guardados na data table `gringo_pedidos`. Como funciona:
 
-1. O cliente solicita ao **suporte da Anota AI** o acesso à **API de parceiros**
-   (token de integração).
-2. Cria-se um pequeno intermediário que recebe o pedido do app e chama a API da
-   Anota AI. A forma mais simples é um **fluxo n8n com um nó Webhook** — sem
-   servidor próprio e sem repositório novo. Alternativa: uma função serverless
-   (`api/`) na própria Vercel/Netlify onde o PWA estiver hospedado.
-3. Preencha `webhookPedidos` no `config.js` com a URL desse webhook. Pronto: o app
-   já envia o pedido completo em JSON via `POST` para essa URL a cada confirmação —
-   nenhuma alteração de código é necessária.
+1. Ao confirmar, o PWA **registra o pedido no hub** (`webhookPedidos`) além de
+   abrir o WhatsApp — os dois caminhos funcionam em paralelo.
+2. A equipe acompanha e atualiza os pedidos no **Painel de Pedidos** (link abaixo):
+   ao confirmar o pedido no Anota AI, toca em **"Aprovar (em preparo)"**; depois
+   **"Saiu p/ entrega"** e **"Marcar entregue"** (ou **"Cancelar"**).
+3. O app do cliente consulta o status a cada 15 s (`statusUrl`) e move a linha do
+   tempo com o **status real** — nada de estimativa.
 
-O envio por WhatsApp e o webhook **funcionam em paralelo**: dá para ativar o
-webhook e manter o WhatsApp como redundância durante a transição.
+### Endereços do hub
+
+| O quê | URL |
+|---|---|
+| Painel de Pedidos (equipe) | `https://n8n.fluxo-royale.com.br/webhook/gringo/painel` |
+| Registrar pedido (usado pelo PWA) | `POST .../webhook/gringo/pedido` |
+| Consultar status (usado pelo PWA) | `GET .../webhook/gringo/status?id=<id>` |
+| Atualizar status (usado pelo painel) | `POST .../webhook/gringo/atualizar` |
+
+O painel pede uma **senha** no primeiro acesso (o "segredo" que autoriza mudanças
+de status). O valor atual é `gringo-status-x7k9m3p2` — está definido nos nós
+"Autorizado?" e "Painel Autorizado?" do workflow; **troque-o antes de passar o
+painel para a equipe** e informe o novo valor só a quem opera os pedidos.
+Salve o link do painel na tela inicial do celular/tablet do balcão.
+
+### Evolução futura — sincronizar sozinho com a Anota AI
+
+Hoje a aprovação é um toque no painel. Para o status mudar sozinho quando a
+equipe mexer no painel da própria Anota AI, o cliente precisa solicitar ao
+suporte da Anota AI o acesso à **API de parceiros** (token). Com o token em
+mãos, basta acrescentar ao workflow do hub um fluxo que consulta a API e chama
+o endpoint `atualizar` — o PWA e o painel continuam exatamente como estão.
 
 ---
 

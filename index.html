@@ -864,7 +864,7 @@ class Component extends DCLogic {
     this._timer = setInterval(() => {
       this.setState((prev) => ({
         pedidos: prev.pedidos.map((p) => {
-          if (p.status === "entregue" || p.status === "saiu") return p;
+          if (p.remoto || p.status === "entregue" || p.status === "saiu") return p;
           const min = (Date.now() - p.data) / 60000;
           let novo = "recebido";
           if (min >= this.ETA.saiu) novo = "saiu";
@@ -889,8 +889,10 @@ class Component extends DCLogic {
       this.tweenTo(el, cards[next].offsetLeft - base);
     }, 10000);
     this._fraseTimer = setInterval(() => this.setState((s) => ({ fraseIdx: (s.fraseIdx || 0) + 1 })), 2300);
+    this._statusTimer = setInterval(() => this._sincronizarStatus(), 15000);
+    setTimeout(() => this._sincronizarStatus(), 3000);
   }
-  componentWillUnmount() { clearInterval(this._timer); clearInterval(this._carTimer); clearInterval(this._fraseTimer); clearInterval(this._introKick); clearTimeout(this._rt); clearTimeout(this._splashT); clearTimeout(this._splashFallback); clearTimeout(this._splashStall); cancelAnimationFrame(this._tw); }
+  componentWillUnmount() { clearInterval(this._timer); clearInterval(this._statusTimer); clearInterval(this._carTimer); clearInterval(this._fraseTimer); clearInterval(this._introKick); clearTimeout(this._rt); clearTimeout(this._splashT); clearTimeout(this._splashFallback); clearTimeout(this._splashStall); cancelAnimationFrame(this._tw); }
   endSplash = () => {
     if (this.state.splashFade || !this.state.splash) return;
     clearTimeout(this._splashT);
@@ -1191,7 +1193,10 @@ class Component extends DCLogic {
     const cfg = window.GRINGO_CONFIG || {};
     if (cfg.webhookPedidos) {
       try {
-        fetch(cfg.webhookPedidos, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(pedido) }).catch(() => {});
+        fetch(cfg.webhookPedidos, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(pedido) })
+          .then((r) => r.json())
+          .then((res) => { if (res && res.ok) this._marcarRemoto(pedido.id); })
+          .catch(() => {});
       } catch (e) {}
     }
     if (cfg.whatsapp) {
@@ -1203,6 +1208,22 @@ class Component extends DCLogic {
         document.body.appendChild(a); a.click(); a.remove();
       } catch (e) { location.href = url; }
     }
+  };
+  _marcarRemoto = (id) => this.setState((s) => ({ pedidos: s.pedidos.map((p) => p.id === id ? { ...p, remoto: true } : p) }));
+  _sincronizarStatus = () => {
+    const cfg = window.GRINGO_CONFIG || {};
+    if (!cfg.statusUrl) return;
+    this.state.pedidos
+      .filter((p) => p.remoto && p.status !== "entregue")
+      .forEach((p) => {
+        fetch(cfg.statusUrl + "?id=" + encodeURIComponent(p.id))
+          .then((r) => r.json())
+          .then((res) => {
+            if (!res || !res.ok || !this.STATUS_FLOW.includes(res.status) || res.status === p.status) return;
+            this.setState((s) => ({ pedidos: s.pedidos.map((x) => x.id === p.id ? { ...x, status: res.status } : x) }));
+          })
+          .catch(() => {});
+      });
   };
   confirmarRecebimento = (id) => this.setState((s) => ({ pedidos: s.pedidos.map((p) => p.id === id ? { ...p, status: "entregue" } : p) }));
 
