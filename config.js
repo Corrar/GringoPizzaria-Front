@@ -2,8 +2,7 @@
 window.GRINGO_CONFIG = {
   // Número de WhatsApp que recebe os pedidos (o mesmo número atendido pelo
   // robô da Anota AI). Formato internacional, só dígitos: 55 + DDD + número.
-  // Ex.: "5511999999999"
-  whatsapp: "",
+  whatsapp: "5518991666717",
 
   // Hub de pedidos (n8n): recebe o pedido completo em JSON via POST e
   // registra para acompanhamento. Deixe vazio ("") para desativar.
