@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<title>Gringo Pizzaria — Cardápio e Pedidos</title>
+<meta name="description" content="Peça sua pizza na Gringo Pizzaria: cardápio completo, monte sua pizza e acompanhe seu pedido. Pagamento na entrega ou retirada.">
+<meta name="theme-color" content="#070F0A">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Gringo Pizzaria">
+<script src="config.js"></script>
+<script src="vendor/react.production.min.js"></script>
+<script src="vendor/react-dom.production.min.js"></script>
+<script src="vendor/dc-runtime.js"></script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("sw.js").catch(function () {});
+  });
+}
+</script>
+</head>
+<body>
+
+<x-dc>
+<helmet>
+<style>/* latin-ext */
+@font-face {
+  font-family: 'Bebas Neue';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/bebas-neue-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Bebas Neue';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/bebas-neue-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/sora-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/sora-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/sora-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/sora-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/sora-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/sora-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/sora-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/sora-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("fonts/sora-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("fonts/sora-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Sora',system-ui,sans-serif;background:#04100A;-webkit-font-smoothing:antialiased}
+  @keyframes gpPing{75%,100%{transform:scale(2.2);opacity:0}}
+  @keyframes gpPulse{0%,100%{opacity:1}50%{opacity:.45}}
+  @keyframes gpFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  @keyframes gpRise{from{transform:translateY(18px);opacity:0}to{transform:translateY(0);opacity:1}}
+  @keyframes gpSheet{from{transform:translateY(100%)}to{transform:translateY(0)}}
+  @keyframes gpSpin{to{transform:rotate(360deg)}}
+  @keyframes gpLoadBar{0%{left:-45%}100%{left:100%}}
+  .gp-x::-webkit-scrollbar{display:none}
+  .gp-x{scrollbar-width:none}
+</style>
+</helmet>
+
+<div style="min-height:100vh;display:flex;justify-content:center;background:#04100A;background-image:radial-gradient(1200px 600px at 50% -10%, rgba(47,209,113,.10), transparent 60%);">
+  <div style="width:100%;max-width:480px;min-height:100vh;background:#070F0A;position:relative;overflow:hidden;box-shadow:0 0 80px rgba(0,0,0,.6);padding-bottom:96px;">
+
+    <!-- ============ SPLASH / INTRO ============ -->
+    <sc-if value="{{ splash }}" hint-placeholder-val="{{ true }}">
+    <div style="{{ splashOverlayStyle }}">
+      <video ref="{{ introRef }}" src="assets/intro.mp4" preload="auto" autoplay="" muted="" playsinline="" style="position:relative;width:auto;height:auto;max-width:90%;max-height:82vh;object-fit:contain;display:block;"></video>
+      <button onclick="{{ onEndSplash }}" style="position:absolute;bottom:30px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.4);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.25);color:#fff;font-family:'Sora',sans-serif;font-size:13px;font-weight:600;padding:10px 22px;border-radius:999px;cursor:pointer;">Pular ›</button>
+    </div>
+    </sc-if>
+
+    <!-- ============ HEADER ============ -->
+    <header style="position:sticky;top:0;z-index:30;background:rgba(7,15,10,.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07);padding:12px 16px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+        <button onclick="{{ navHome }}" style="display:flex;align-items:center;gap:10px;background:none;border:none;cursor:pointer;padding:0;">
+          <span style="font-family:'Bebas Neue';font-size:26px;letter-spacing:.06em;color:#fff;line-height:1;">Pizzaria</span>
+        </button>
+        <button onclick="{{ navCart }}" style="position:relative;display:flex;align-items:center;justify-content:center;height:42px;width:42px;border-radius:14px;background:rgba(47,209,113,.12);border:1px solid rgba(47,209,113,.3);cursor:pointer;">
+          {{ icCartHeader }}
+          <sc-if value="{{ hasCart }}" hint-placeholder-val="{{ false }}">
+            <span style="position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;padding:0 5px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:#FF5A4D;color:#fff;font-size:11px;font-weight:800;">{{ cartCount }}</span>
+          </sc-if>
+        </button>
+      </div>
+      <button onclick="{{ onOpenAddr }}" style="margin-top:10px;display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:8px 12px;width:100%;cursor:pointer;">
+        {{ icPin }}
+        <span style="font-size:12px;color:#8AA596;text-align:left;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Entregar em <strong style="color:#fff;font-weight:600;">{{ headerEndereco }}</strong></span>
+        <span style="font-size:11px;color:#2FD171;font-weight:700;flex:none;">Trocar</span>
+      </button>
+    </header>
+
+    <!-- ============ HOME ============ -->
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+    <main style="padding:14px 16px 8px;animation:gpRise .3s ease both;">
+
+      <!-- hero -->
+      <section style="position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.09);margin-bottom:14px;">
+        <div style="position:absolute;inset:0;background:radial-gradient(130% 150% at 88% 100%, rgba(47,209,113,.30) 0%, rgba(20,90,55,.14) 34%, transparent 62%), linear-gradient(315deg, #11432a 0%, #0b2017 48%, #060f0a 100%);"></div>
+        <div style="position:relative;padding:16px;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <img src="assets/logo.png" alt="Gringo Pizzaria" style="width:54px;height:54px;border-radius:50%;border:2px solid rgba(47,209,113,.55);object-fit:cover;flex:none;background:#0a130d;">
+            <div style="flex:1;min-width:0;">
+              <div style="font-family:'Bebas Neue';font-size:27px;line-height:.92;letter-spacing:.04em;color:#fff;">GRINGO <span style="color:#2FD171;">PIZZARIA</span></div>
+              <div style="font-size:11px;letter-spacing:.03em;color:#aebfb4;margin-top:3px;">Pizzaria artesanal • Forno a lenha</div>
+            </div>
+            <span style="{{ statusPillStyle }}"><span style="{{ statusDotStyle }}"></span>{{ statusLabel }}</span>
+          </div>
+
+          <div style="margin-top:14px;display:flex;gap:8px;">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:13px;padding:9px 4px;">
+              <span style="display:flex;align-items:center;gap:4px;color:#FFC53D;font-weight:800;font-size:15px;">{{ icStar }}4,8</span>
+              <span style="font-size:10px;color:#8aa596;">+320 avaliações</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:13px;padding:9px 4px;">
+              <span style="display:flex;align-items:center;gap:5px;color:#fff;font-weight:800;font-size:15px;">{{ icBike }}30–40</span>
+              <span style="font-size:10px;color:#8aa596;">min de entrega</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:13px;padding:9px 4px;">
+              <span style="color:#2FD171;font-weight:800;font-size:15px;">R$ 7</span>
+              <span style="font-size:10px;color:#8aa596;">taxa de entrega</span>
+            </div>
+          </div>
+
+          <div style="margin-top:13px;display:flex;align-items:center;gap:7px;font-size:12px;color:#cfe0d6;">
+            {{ icClock }}<span>{{ horarioTexto }} · <span style="color:#8aa596;">{{ statusSub }}</span></span>
+          </div>
+          <div style="margin-top:6px;display:flex;align-items:center;gap:7px;font-size:12px;color:#cfe0d6;">
+            {{ icPinHero }}<span>{{ localTexto }}</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- search -->
+      <div style="display:flex;align-items:center;gap:10px;background:#0E1A12;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:12px 14px;">
+        {{ icSearch }}
+        <input value="{{ buscaValue }}" onchange="{{ onBusca }}" placeholder="Buscar sabor, combo, borda…" style="flex:1;min-width:0;background:none;border:none;outline:none;color:#fff;font-size:14px;font-family:inherit;">
+        <sc-if value="{{ hasBusca }}" hint-placeholder-val="{{ false }}">
+          <button onclick="{{ onClearBusca }}" style="flex:none;background:rgba(255,255,255,.08);border:none;color:#fff;width:22px;height:22px;border-radius:50%;font-size:14px;cursor:pointer;line-height:1;">×</button>
+        </sc-if>
+      </div>
+
+      <!-- variant switcher -->
+      <div style="margin-top:14px;display:flex;align-items:center;gap:8px;">
+        <span style="font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:#5f7a6c;font-weight:700;">Layout</span>
+        <div style="display:flex;gap:6px;background:#0C1610;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:4px;">
+          <sc-for list="{{ variants }}" as="v" hint-placeholder-count="3">
+            <button onclick="{{ v.onClick }}" style="{{ v.style }}">{{ v.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- combos strip -->
+      <sc-if value="{{ notBusca }}" hint-placeholder-val="{{ true }}">
+      <div style="margin-top:18px;display:flex;align-items:center;justify-content:space-between;">
+        <h2 style="margin:0;font-family:'Bebas Neue';font-size:26px;line-height:1.05;letter-spacing:.04em;color:#fff;white-space:nowrap;display:flex;align-items:center;gap:8px;">{{ icFlame }}<span>Nossos cardápios</span></h2>
+        <span style="font-size:11px;color:#2FD171;font-weight:700;">3 linhas</span>
+      </div>
+      <div class="gp-x" data-carousel="1" ref="{{ carouselRef }}" onmousedown="{{ onCarouselDown }}" onpointerenter="{{ onCarPause }}" onpointerleave="{{ onCarResume }}" ontouchstart="{{ onCarPause }}" ontouchend="{{ onCarResumeSoon }}" style="margin-top:10px;display:flex;gap:0;overflow-x:auto;padding-bottom:4px;cursor:grab;user-select:none;-webkit-user-select:none;">
+        <sc-for list="{{ combos }}" as="c" hint-placeholder-count="3">
+          <article style="flex:0 0 100%;scroll-snap-align:start;border-radius:18px;overflow:hidden;background:#0E1A12;border:1px solid rgba(255,255,255,.08);">
+            <div style="position:relative;height:120px;overflow:hidden;">
+              <div style="{{ c.phStyle }}"></div>
+              <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'ui-monospace',monospace;font-size:11px;letter-spacing:.06em;color:rgba(255,255,255,.55);">{{ c.imgLabel }}</span>
+              <span style="position:absolute;top:10px;left:10px;background:#FF5A4D;color:#fff;font-size:11px;font-weight:800;padding:3px 8px;border-radius:8px;">{{ c.badge }}</span>
+            </div>
+            <div style="padding:12px 14px 14px;">
+              <h3 style="margin:0;font-size:15px;font-weight:700;color:#fff;">{{ c.nome }}</h3>
+              <p style="margin:4px 0 0;font-size:12px;color:#8AA596;line-height:1.35;min-height:32px;">{{ c.desc }}</p>
+              <div style="margin-top:10px;display:flex;align-items:center;justify-content:space-between;">
+                <div>
+                  <span style="font-size:11px;color:#6f8a7c;">{{ c.antigoFmt }}</span>
+                  <span style="display:block;font-family:'Bebas Neue';font-size:24px;line-height:.9;color:#2FD171;">{{ c.precoFmt }}</span>
+                </div>
+                <button onclick="{{ c.onAdd }}" style="background:#2FD171;color:#04140A;border:none;border-radius:12px;padding:9px 14px;font-size:13px;font-weight:800;cursor:pointer;">Ver sabores</button>
+              </div>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+      </sc-if>
+
+      <!-- category chips -->
+      <sc-if value="{{ notBusca }}" hint-placeholder-val="{{ true }}">
+      <div class="gp-x" style="margin-top:22px;display:flex;gap:8px;overflow-x:auto;">
+        <sc-for list="{{ filtros }}" as="f" hint-placeholder-count="4">
+          <button onclick="{{ f.onClick }}" style="{{ f.style }}">{{ f.label }}</button>
+        </sc-for>
+      </div>
+      </sc-if>
+
+      <h2 style="margin:18px 0 0;font-family:'Bebas Neue';font-size:26px;letter-spacing:.04em;color:#fff;">{{ menuTitulo }}</h2>
+
+      <!-- V1 / V3 : grid de cards com foto -->
+      <sc-if value="{{ isGrid }}" hint-placeholder-val="{{ true }}">
+      <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <sc-for list="{{ sabores }}" as="s" hint-placeholder-count="6">
+          <article style="display:flex;flex-direction:column;border-radius:16px;overflow:hidden;background:#0E1A12;border:1px solid rgba(255,255,255,.08);">
+            <div style="position:relative;height:96px;overflow:hidden;">
+              <div style="{{ s.phStyle }}"></div>
+              <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'ui-monospace',monospace;font-size:10px;color:rgba(255,255,255,.5);text-align:center;padding:0 6px;">{{ s.imgLabel }}</span>
+              <sc-if value="{{ s.popular }}" hint-placeholder-val="{{ false }}">
+                <span style="position:absolute;top:8px;left:8px;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);color:#FFC53D;font-size:10px;font-weight:800;padding:3px 7px;border-radius:7px;display:inline-flex;align-items:center;gap:3px;">{{ icStar }}Top</span>
+              </sc-if>
+            </div>
+            <div style="padding:10px 11px 12px;display:flex;flex-direction:column;flex:1;">
+              <h3 style="margin:0;font-size:14px;font-weight:700;color:#fff;">{{ s.nome }}</h3>
+              <p style="margin:3px 0 0;font-size:11px;color:#8AA596;line-height:1.35;flex:1;">{{ s.descricao }}</p>
+              <div style="margin-top:10px;display:flex;align-items:center;justify-content:space-between;">
+                <span style="font-size:10px;color:#6f8a7c;">{{ s.precoLabel }}<strong style="display:block;font-size:14px;color:#fff;font-weight:700;">{{ s.precoDesdeFmt }}</strong></span>
+                <button onclick="{{ s.onMontar }}" style="background:rgba(47,209,113,.14);color:#2FD171;border:1px solid rgba(47,209,113,.4);border-radius:11px;width:34px;height:34px;font-size:20px;font-weight:700;cursor:pointer;line-height:1;">+</button>
+              </div>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+      </sc-if>
+
+      <!-- V2 Express : lista compacta -->
+      <sc-if value="{{ isList }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top:12px;display:flex;flex-direction:column;gap:10px;">
+        <sc-for list="{{ sabores }}" as="s" hint-placeholder-count="6">
+          <article style="display:flex;align-items:center;gap:12px;border-radius:16px;background:#0E1A12;border:1px solid rgba(255,255,255,.08);padding:10px;">
+            <div style="position:relative;flex:0 0 74px;height:74px;border-radius:12px;overflow:hidden;">
+              <div style="{{ s.phStyle }}"></div>
+              <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'ui-monospace',monospace;font-size:8px;color:rgba(255,255,255,.5);text-align:center;padding:0 4px;">{{ s.imgLabel }}</span>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="display:flex;align-items:center;gap:6px;">
+                <h3 style="margin:0;font-size:14px;font-weight:700;color:#fff;">{{ s.nome }}</h3>
+                <sc-if value="{{ s.popular }}" hint-placeholder-val="{{ false }}">{{ s.starIcon }}</sc-if>
+              </div>
+              <p style="margin:2px 0 0;font-size:11px;color:#8AA596;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ s.descricao }}</p>
+              <span style="margin-top:4px;display:inline-block;font-size:12px;color:#fff;">{{ s.precoLabel }} <strong style="color:#2FD171;">{{ s.precoDesdeFmt }}</strong></span>
+            </div>
+            <button onclick="{{ s.onMontar }}" style="flex:0 0 auto;background:#2FD171;color:#04140A;border:none;border-radius:12px;padding:9px 13px;font-size:13px;font-weight:800;cursor:pointer;">Montar</button>
+          </article>
+        </sc-for>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ semResultados }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:24px;text-align:center;border:1px dashed rgba(255,255,255,.14);border-radius:16px;padding:30px 20px;background:rgba(255,255,255,.02);">
+          <p style="margin:0;color:#8AA596;font-size:14px;">Nenhum sabor encontrado para "<strong style="color:#fff;">{{ buscaValue }}</strong>".</p>
+        </div>
+      </sc-if>
+
+    </main>
+    </sc-if>
+
+    <!-- ============ CARRINHO ============ -->
+    <sc-if value="{{ isCart }}" hint-placeholder-val="{{ false }}">
+    <main style="padding:18px 16px;animation:gpRise .3s ease both;">
+      <h2 style="margin:0 0 14px;font-family:'Bebas Neue';font-size:32px;letter-spacing:.03em;color:#fff;">Seu carrinho</h2>
+      <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ true }}">
+        <div style="margin-top:30px;text-align:center;border:1px dashed rgba(255,255,255,.14);border-radius:18px;padding:40px 20px;background:rgba(255,255,255,.02);">
+          <div style="display:flex;justify-content:center;">{{ icEmptyCart }}</div>
+          <p style="margin:12px 0 16px;color:#8AA596;font-size:14px;">Seu carrinho está vazio.</p>
+          <button onclick="{{ navHome }}" style="background:#2FD171;color:#04140A;border:none;border-radius:14px;padding:12px 22px;font-weight:800;font-size:14px;cursor:pointer;">Ver cardápio</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ cartHasItems }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <sc-for list="{{ cartItems }}" as="it" hint-placeholder-count="2">
+            <div style="display:flex;gap:12px;border-radius:16px;background:#0E1A12;border:1px solid rgba(255,255,255,.08);padding:12px;">
+              <div style="position:relative;flex:0 0 60px;height:60px;border-radius:12px;overflow:hidden;">
+                <div style="{{ it.phStyle }}"></div>
+                <sc-if value="{{ it.showIcon }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">{{ it.icon }}</span></sc-if>
+              </div>
+              <div style="flex:1;min-width:0;">
+                <div style="font-size:14px;font-weight:700;color:#fff;">{{ it.titulo }}</div>
+                <div style="font-size:12px;color:#8AA596;margin-top:2px;line-height:1.3;">{{ it.sub }}</div>
+                <sc-if value="{{ it.hasObs }}" hint-placeholder-val="{{ false }}"><div style="font-size:11px;font-style:italic;color:#6f8a7c;margin-top:2px;">Obs: {{ it.obs }}</div></sc-if>
+                <div style="margin-top:8px;display:flex;align-items:center;gap:12px;">
+                  <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border-radius:10px;padding:3px 4px;">
+                    <button onclick="{{ it.onDec }}" style="width:24px;height:24px;border:none;background:none;color:#2FD171;font-size:18px;cursor:pointer;line-height:1;">−</button>
+                    <span style="font-size:13px;font-weight:700;color:#fff;min-width:14px;text-align:center;">{{ it.qty }}</span>
+                    <button onclick="{{ it.onInc }}" style="width:24px;height:24px;border:none;background:none;color:#2FD171;font-size:18px;cursor:pointer;line-height:1;">+</button>
+                  </div>
+                  <span style="font-family:'Bebas Neue';font-size:20px;color:#2FD171;">{{ it.precoFmt }}</span>
+                </div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:16px;display:flex;align-items:center;justify-content:space-between;background:#0E1A12;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:16px;">
+          <div>
+            <div style="font-size:11px;color:#6f8a7c;text-transform:uppercase;letter-spacing:.1em;">Subtotal</div>
+            <div style="font-family:'Bebas Neue';font-size:30px;color:#fff;">{{ cartSubtotalFmt }}</div>
+          </div>
+          <button onclick="{{ onCheckout }}" style="background:#2FD171;color:#04140A;border:none;border-radius:14px;padding:14px 20px;font-weight:800;font-size:14px;cursor:pointer;">Finalizar →</button>
+        </div>
+      </sc-if>
+    </main>
+    </sc-if>
+
+    <!-- ============ CHECKOUT ============ -->
+    <sc-if value="{{ isCheckout }}" hint-placeholder-val="{{ false }}">
+    <main style="padding:18px 16px;animation:gpRise .3s ease both;">
+      <button onclick="{{ onBackCart }}" style="background:none;border:none;color:#8AA596;font-size:13px;cursor:pointer;padding:0;">← Voltar ao carrinho</button>
+      <h2 style="margin:8px 0 16px;font-family:'Bebas Neue';font-size:32px;letter-spacing:.03em;color:#fff;">Finalizar pedido</h2>
+
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#6f8a7c;font-weight:700;margin-bottom:8px;">Como vai receber?</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <button onclick="{{ onModoDelivery }}" style="{{ modoDeliveryStyle }}"><span style="display:flex;justify-content:center;margin-bottom:2px;">{{ icDelivery }}</span><span style="display:block;font-weight:700;margin-top:4px;">Delivery</span><span style="display:block;font-size:11px;color:#8AA596;">Taxa {{ taxaFmt }}</span></button>
+        <button onclick="{{ onModoRetirada }}" style="{{ modoRetiradaStyle }}"><span style="display:flex;justify-content:center;margin-bottom:2px;">{{ icRetirar }}</span><span style="display:block;font-weight:700;margin-top:4px;">Retirar</span><span style="display:block;font-size:11px;color:#8AA596;">Sem taxa</span></button>
+      </div>
+
+      <div style="margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <label style="display:block;">
+          <span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#6f8a7c;font-weight:700;margin-bottom:5px;">Nome</span>
+          <input value="{{ chk.nome.value }}" onchange="{{ chk.nome.onChange }}" placeholder="Seu nome" style="width:100%;background:#0E1A12;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:11px 12px;color:#fff;font-size:14px;outline:none;font-family:inherit;">
+        </label>
+        <label style="display:block;">
+          <span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#6f8a7c;font-weight:700;margin-bottom:5px;">Telefone</span>
+          <input value="{{ chk.tel.value }}" onchange="{{ chk.tel.onChange }}" placeholder="(00) 00000-0000" style="width:100%;background:#0E1A12;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:11px 12px;color:#fff;font-size:14px;outline:none;font-family:inherit;">
+        </label>
+      </div>
+
+      <sc-if value="{{ showAddress }}" hint-placeholder-val="{{ true }}">
+      <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <label style="display:block;grid-column:span 2;">
+          <span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#6f8a7c;font-weight:700;margin-bottom:5px;">Rua</span>
+          <input value="{{ chk.rua.value }}" onchange="{{ chk.rua.onChange }}" placeholder="Av. das Pizzas" style="width:100%;background:#0E1A12;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:11px 12px;color:#fff;font-size:14px;outline:none;font-family:inherit;">
+        </label>
+        <label style="display:block;">
+          <span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#6f8a7c;font-weight:700;margin-bottom:5px;">Número</span>
+          <input value="{{ chk.numero.value }}" onchange="{{ chk.numero.onChange }}" placeholder="123" style="width:100%;background:#0E1A12;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:11px 12px;color:#fff;font-size:14px;outline:none;font-family:inherit;">
+        </label>
+        <label style="display:block;">
+          <span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#6f8a7c;font-weight:700;margin-bottom:5px;">Bairro</span>
+          <input value="{{ chk.bairro.value }}" onchange="{{ chk.bairro.onChange }}" placeholder="Centro" style="width:100%;background:#0E1A12;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:11px 12px;color:#fff;font-size:14px;outline:none;font-family:inherit;">
+        </label>
+        <label style="display:block;grid-column:span 2;">
+          <span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#6f8a7c;font-weight:700;margin-bottom:5px;">Cidade</span>
+          <input value="{{ chk.cidade.value }}" onchange="{{ chk.cidade.onChange }}" placeholder="Sua cidade" style="width:100%;background:#0E1A12;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:11px 12px;color:#fff;font-size:14px;outline:none;font-family:inherit;">
+        </label>
+      </div>
+      </sc-if>
+
+      <div style="margin-top:18px;font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#6f8a7c;font-weight:700;margin-bottom:8px;">Pagamento</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <sc-for list="{{ pagamentos }}" as="p" hint-placeholder-count="3">
+          <button onclick="{{ p.onClick }}" style="{{ p.style }}">
+            <span style="font-size:18px;">{{ p.icon }}</span>
+            <span style="flex:1;text-align:left;"><span style="display:block;font-weight:700;color:#fff;font-size:14px;">{{ p.label }}</span><span style="display:block;font-size:11px;color:#8AA596;">{{ p.sub }}</span></span>
+            <sc-if value="{{ p.active }}" hint-placeholder-val="{{ false }}"><span style="color:#2FD171;font-size:16px;">●</span></sc-if>
+          </button>
+        </sc-for>
+      </div>
+
+      <div style="margin-top:18px;background:#0E1A12;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:16px;">
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:#cfe0d6;margin-bottom:6px;"><span>Subtotal</span><span>{{ checkoutSubtotalFmt }}</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:#cfe0d6;margin-bottom:6px;"><span>Taxa de entrega</span><span>{{ checkoutTaxaFmt }}</span></div>
+        <sc-if value="{{ showDesconto }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;justify-content:space-between;font-size:13px;color:#2FD171;margin-bottom:6px;"><span>Desconto Pix (10%)</span><span>{{ checkoutDescontoFmt }}</span></div>
+        </sc-if>
+        <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.1);padding-top:10px;margin-top:8px;">
+          <span style="font-weight:700;color:#fff;">Total</span>
+          <span style="font-family:'Bebas Neue';font-size:30px;color:#2FD171;">{{ checkoutTotalFmt }}</span>
+        </div>
+        <button onclick="{{ onConfirm }}" style="{{ confirmStyle }}">Confirmar pedido</button>
+      </div>
+    </main>
+    </sc-if>
+
+    <!-- ============ PEDIDOS ============ -->
+    <sc-if value="{{ isPedidos }}" hint-placeholder-val="{{ false }}">
+    <main style="padding:18px 16px;animation:gpRise .3s ease both;">
+      <h2 style="margin:0 0 14px;font-family:'Bebas Neue';font-size:32px;letter-spacing:.03em;color:#fff;">Meus pedidos</h2>
+      <sc-if value="{{ pedidosEmpty }}" hint-placeholder-val="{{ true }}">
+        <div style="margin-top:30px;text-align:center;border:1px dashed rgba(255,255,255,.14);border-radius:18px;padding:40px 20px;background:rgba(255,255,255,.02);">
+          <div style="display:flex;justify-content:center;">{{ icEmptyPedidos }}</div>
+          <p style="margin:12px 0 16px;color:#8AA596;font-size:14px;">Você ainda não fez nenhum pedido.</p>
+          <button onclick="{{ navHome }}" style="background:#2FD171;color:#04140A;border:none;border-radius:14px;padding:12px 22px;font-weight:800;font-size:14px;cursor:pointer;">Ver cardápio</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ pedidosHas }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <sc-for list="{{ pedidos }}" as="p" hint-placeholder-count="1">
+            <article style="border-radius:18px;overflow:hidden;background:#0E1A12;border:1px solid rgba(255,255,255,.08);">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px;background:rgba(255,255,255,.02);border-bottom:1px solid rgba(255,255,255,.06);">
+                <div>
+                  <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#6f8a7c;">Pedido #{{ p.id }}</div>
+                  <div style="margin-top:3px;font-weight:700;color:#fff;font-size:14px;">{{ p.modoLabel }} • {{ p.totalFmt }}</div>
+                </div>
+                <div style="text-align:right;">
+                  <div style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#6f8a7c;">{{ p.etaTitulo }}</div>
+                  <div style="font-family:'Bebas Neue';font-size:26px;color:#2FD171;line-height:1;">{{ p.etaValor }}</div>
+                  <div style="font-size:10px;color:#6f8a7c;">{{ p.etaSub }}</div>
+                </div>
+              </div>
+              <div style="padding:14px 16px 0;">
+                <div style="display:flex;gap:5px;">
+                  <sc-for list="{{ p.segBars }}" as="seg" hint-placeholder-count="3">
+                    <div style="flex:1;height:6px;border-radius:3px;background:rgba(255,255,255,.08);overflow:hidden;position:relative;">
+                      <div style="{{ seg.fillStyle }}"></div>
+                    </div>
+                  </sc-for>
+                </div>
+                <sc-if value="{{ p.showFrases }}" hint-placeholder-val="{{ false }}">
+                  <div style="margin-top:9px;display:flex;align-items:center;gap:8px;">
+                    <span style="font-size:12px;color:#2FD171;font-weight:600;">{{ p.fraseAtual }}</span>
+                  </div>
+                </sc-if>
+              </div>
+              <div style="padding:16px;">
+                <div style="display:flex;align-items:flex-start;">
+                  <sc-for list="{{ p.steps }}" as="st" hint-placeholder-count="4">
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0;">
+                      <div style="display:flex;align-items:center;width:100%;">
+                        <div style="{{ st.lineLeftStyle }}"></div>
+                        <span style="{{ st.nodeStyle }}">{{ st.icon }}</span>
+                        <div style="{{ st.lineRightStyle }}"></div>
+                      </div>
+                      <div style="{{ st.labelStyle }}">{{ st.curto }}</div>
+                    </div>
+                  </sc-for>
+                </div>
+
+                <sc-if value="{{ p.aguardando }}" hint-placeholder-val="{{ false }}">
+                  <div style="margin-top:4px;border:1px solid rgba(47,209,113,.4);background:rgba(47,209,113,.1);border-radius:14px;padding:14px;">
+                    <div style="display:flex;align-items:center;gap:10px;">
+                      <div style="flex:0 0 40px;height:40px;border-radius:50%;background:repeating-linear-gradient(45deg,#1c3326 0 6px,#24412f 6px 12px);display:flex;align-items:center;justify-content:center;">{{ p.bikeIcon }}</div>
+                      <div style="flex:1;"><div style="font-size:13px;font-weight:700;color:#fff;">{{ p.entregadorNome }} está a caminho</div><div style="font-size:11px;color:#8AA596;">Já recebeu seu pedido?</div></div>
+                    </div>
+                    <button onclick="{{ p.onConfirmar }}" style="margin-top:10px;width:100%;background:#2FD171;color:#04140A;border:none;border-radius:12px;padding:11px;font-weight:800;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;">{{ p.confirmIcon }}Confirmar recebimento</button>
+                  </div>
+                </sc-if>
+              </div>
+
+              <div style="border-top:1px solid rgba(255,255,255,.06);padding:14px 16px;">
+                <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#6f8a7c;margin-bottom:6px;">Itens ({{ p.qtdItens }})</div>
+                <sc-for list="{{ p.itensResumo }}" as="r" hint-placeholder-count="1">
+                  <div style="font-size:12px;color:#cfe0d6;line-height:1.5;">• {{ r.texto }}</div>
+                </sc-for>
+                <sc-if value="{{ p.temEndereco }}" hint-placeholder-val="{{ false }}"><div style="margin-top:8px;display:flex;align-items:center;gap:5px;font-size:11px;color:#6f8a7c;">{{ p.pinIcon }}<span>{{ p.enderecoTexto }}</span></div></sc-if>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+      </sc-if>
+    </main>
+    </sc-if>
+
+    <!-- ============ BOTTOM NAV ============ -->
+    <nav style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;z-index:30;background:rgba(7,15,10,.92);backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,.08);display:flex;padding:8px 8px calc(8px + env(safe-area-inset-bottom));">
+      <button onclick="{{ navHome }}" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;cursor:pointer;padding:6px;color:{{ navHomeColor }};">
+        <span style="display:flex;">{{ icNavHome }}</span><span style="font-size:10px;font-weight:700;">Cardápio</span>
+      </button>
+      <button onclick="{{ navPedidos }}" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;cursor:pointer;padding:6px;color:{{ navPedidosColor }};">
+        <span style="display:flex;">{{ icNavPedidos }}</span><span style="font-size:10px;font-weight:700;">Pedidos</span>
+      </button>
+      <button onclick="{{ navCart }}" style="flex:1;position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;cursor:pointer;padding:6px;color:{{ navCartColor }};">
+        <span style="display:flex;">{{ icNavCart }}</span><span style="font-size:10px;font-weight:700;">Carrinho</span>
+        <sc-if value="{{ hasCart }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:2px;right:24%;min-width:16px;height:16px;padding:0 4px;display:flex;align-items:center;justify-content:center;border-radius:8px;background:#FF5A4D;color:#fff;font-size:10px;font-weight:800;">{{ cartCount }}</span></sc-if>
+      </button>
+    </nav>
+
+    <!-- ============ FLOATING CART BAR (home) ============ -->
+    <sc-if value="{{ showCartBar }}" hint-placeholder-val="{{ false }}">
+      <div style="position:fixed;bottom:calc(86px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:25;width:100%;max-width:480px;padding:0 16px;box-sizing:border-box;pointer-events:none;">
+      <button onclick="{{ navCart }}" style="pointer-events:auto;width:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#2FD171;color:#04140A;border:none;border-radius:16px;padding:13px 16px;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 12px 30px rgba(47,209,113,.35);animation:gpRise .3s ease both;">
+        <span style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;">{{ icCartBar }}<span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Ver carrinho • {{ cartCount }} {{ cartItensLabel }}</span></span>
+        <span style="font-family:'Bebas Neue';font-size:22px;flex:none;">{{ cartSubtotalFmt }}</span>
+      </button>
+      </div>
+    </sc-if>
+
+    <!-- ============ ENDEREÇO ============ -->
+    <sc-if value="{{ addrOpen }}" hint-placeholder-val="{{ false }}">
+    <div onclick="{{ onCloseAddr }}" style="position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.72);display:flex;align-items:flex-end;justify-content:center;">
+      <div onclick="{{ stop }}" style="width:100%;max-width:480px;background:#0A130D;border-radius:24px 24px 0 0;border-top:1px solid rgba(255,255,255,.1);animation:gpSheet .32s cubic-bezier(.2,.8,.2,1) both;">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.07);">
+          <h3 style="margin:0;font-family:'Bebas Neue';font-size:24px;letter-spacing:.03em;color:#fff;white-space:nowrap;">Endereço de entrega</h3>
+          <button onclick="{{ onCloseAddr }}" style="background:rgba(255,255,255,.06);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;line-height:1;">×</button>
+        </div>
+        <div style="padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <label style="display:block;grid-column:span 2;">
+            <span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#6f8a7c;font-weight:700;margin-bottom:5px;">Rua</span>
+            <input value="{{ addr.rua.value }}" onchange="{{ addr.rua.onChange }}" placeholder="Av. das Pizzas" style="width:100%;background:#0E1A12;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:11px 12px;color:#fff;font-size:14px;outline:none;font-family:inherit;">
+          </label>
+          <label style="display:block;">
+            <span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#6f8a7c;font-weight:700;margin-bottom:5px;">Número</span>
+            <input value="{{ addr.numero.value }}" onchange="{{ addr.numero.onChange }}" placeholder="123" style="width:100%;background:#0E1A12;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:11px 12px;color:#fff;font-size:14px;outline:none;font-family:inherit;">
+          </label>
+          <label style="display:block;">
+            <span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#6f8a7c;font-weight:700;margin-bottom:5px;">Bairro</span>
+            <input value="{{ addr.bairro.value }}" onchange="{{ addr.bairro.onChange }}" placeholder="Centro" style="width:100%;background:#0E1A12;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:11px 12px;color:#fff;font-size:14px;outline:none;font-family:inherit;">
+          </label>
+          <label style="display:block;grid-column:span 2;">
+            <span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#6f8a7c;font-weight:700;margin-bottom:5px;">Cidade</span>
+            <input value="{{ addr.cidade.value }}" onchange="{{ addr.cidade.onChange }}" placeholder="Sua cidade" style="width:100%;background:#0E1A12;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:11px 12px;color:#fff;font-size:14px;outline:none;font-family:inherit;">
+          </label>
+          <label style="display:block;grid-column:span 2;">
+            <span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#6f8a7c;font-weight:700;margin-bottom:5px;">Ponto de referência (opcional)</span>
+            <input value="{{ addr.ref.value }}" onchange="{{ addr.ref.onChange }}" placeholder="Próximo ao..." style="width:100%;background:#0E1A12;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:11px 12px;color:#fff;font-size:14px;outline:none;font-family:inherit;">
+          </label>
+        </div>
+        <div style="padding:0 18px calc(18px + env(safe-area-inset-bottom));">
+          <button onclick="{{ onSaveAddr }}" style="{{ addrSaveStyle }}">Salvar endereço</button>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+    <!-- ============ BUILDER (montar pizza) ============ -->
+    <sc-if value="{{ builderOpen }}" hint-placeholder-val="{{ false }}">
+    <div onclick="{{ onCloseBuilder }}" style="position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.72);display:flex;align-items:flex-end;justify-content:center;">
+      <div onclick="{{ stop }}" style="width:100%;max-width:480px;max-height:94vh;overflow-y:auto;background:#0A130D;border-radius:24px 24px 0 0;border-top:1px solid rgba(255,255,255,.1);animation:gpSheet .32s cubic-bezier(.2,.8,.2,1) both;">
+        <div style="position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:16px 18px;background:#0A130D;border-bottom:1px solid rgba(255,255,255,.07);">
+          <div style="width:38px;height:4px;border-radius:2px;background:rgba(255,255,255,.18);position:absolute;top:7px;left:50%;transform:translateX(-50%);"></div>
+          <h3 style="margin:0;font-family:'Bebas Neue';font-size:26px;letter-spacing:.03em;color:#fff;white-space:nowrap;">Monte sua pizza</h3>
+          <button onclick="{{ onCloseBuilder }}" style="background:rgba(255,255,255,.06);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;line-height:1;">×</button>
+        </div>
+
+        <div style="padding:18px;">
+          <!-- tipo de pizza (linha) -->
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#6f8a7c;font-weight:700;margin-bottom:8px;">Tipo de pizza</div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:22px;">
+            <sc-for list="{{ bLinhas }}" as="l" hint-placeholder-count="3">
+              <button onclick="{{ l.onSelect }}" style="{{ l.style }}">
+                <span style="font-weight:700;color:#fff;font-size:14px;">{{ l.nome }}</span>
+                <span style="font-size:11px;color:#8AA596;">{{ l.desc }}</span>
+              </button>
+            </sc-for>
+          </div>
+
+          <!-- pizza visual -->
+          <div style="display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;">
+            <sc-if value="{{ showDiscPhoto }}" hint-placeholder-val="{{ false }}">
+              <div style="{{ discPhotoStyle }}"></div>
+            </sc-if>
+            <sc-if value="{{ showDiscDraw }}" hint-placeholder-val="{{ true }}">
+            <div style="{{ discWrapStyle }}">
+            <div style="{{ discStyle }}">
+              <sc-for list="{{ pizzaLayers }}" as="L" hint-placeholder-count="2">
+                <div style="{{ L.style }}"></div>
+              </sc-for>
+              <sc-for list="{{ pizzaCuts }}" as="cut" hint-placeholder-count="6">
+                <div style="{{ cut.style }}"></div>
+              </sc-for>
+              <sc-for list="{{ pizzaDividers }}" as="d" hint-placeholder-count="2">
+                <div style="{{ d.style }}"></div>
+              </sc-for>
+              <div style="position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 20px rgba(70,35,5,.55);pointer-events:none;"></div>
+            </div>
+              <sc-if value="{{ hasInset }}" hint-placeholder-val="{{ false }}"><div style="{{ discInset }}"></div></sc-if>
+              <sc-for list="{{ discBumps }}" as="bp" hint-placeholder-count="0">
+                <div style="{{ bp.style }}"></div>
+              </sc-for>
+            </div>
+            </sc-if>
+            <div style="display:flex;flex-direction:column;gap:9px;min-width:128px;">
+              <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#6f8a7c;font-weight:700;">Na sua pizza</div>
+              <sc-for list="{{ pizzaChips }}" as="c" hint-placeholder-count="2">
+                <div style="display:flex;align-items:center;gap:9px;">
+                  <span style="{{ c.dotStyle }}"></span>
+                  <span style="font-size:13px;color:#fff;font-weight:600;">{{ c.nome }}</span>
+                  <sc-if value="{{ c.hasFrac }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#8AA596;">{{ c.fracao }}</span></sc-if>
+                </div>
+              </sc-for>
+              <div style="display:flex;align-items:center;gap:9px;margin-top:3px;padding-top:10px;border-top:1px solid rgba(255,255,255,.08);">
+                <span style="{{ bordaSwatchStyle }}"></span>
+                <span style="font-size:13px;color:#fff;font-weight:600;">Borda</span>
+                <span style="font-size:12px;color:#8AA596;">{{ bordaNome }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- tamanho -->
+          <sc-if value="{{ showSizes }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-top:20px;font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#6f8a7c;font-weight:700;margin-bottom:8px;">Tamanho</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <sc-for list="{{ bSizes }}" as="t" hint-placeholder-count="2">
+              <button onclick="{{ t.onSelect }}" style="{{ t.style }}">
+                <span style="font-weight:700;color:#fff;font-size:14px;">{{ t.nome }}</span>
+                <span style="font-size:11px;color:#8AA596;">{{ t.subLabel }}</span>
+                <span style="display:block;margin-top:3px;font-family:'Bebas Neue';font-size:20px;color:#2FD171;">{{ t.precoFmt }}</span>
+              </button>
+            </sc-for>
+          </div>
+          </sc-if>
+
+          <!-- sabores -->
+          <div style="margin-top:20px;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+            <span style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#6f8a7c;font-weight:700;">Sabores</span>
+            <span style="font-size:11px;color:#2FD171;font-weight:700;white-space:nowrap;">{{ bSaboresContador }}</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <sc-for list="{{ bSabores }}" as="s" hint-placeholder-count="6">
+              <button onclick="{{ s.onToggle }}" style="{{ s.style }}">
+                <div style="position:relative;height:96px;overflow:hidden;">
+                  <div style="{{ s.phStyle }}"></div>
+                  <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'ui-monospace',monospace;font-size:9px;color:rgba(255,255,255,.5);text-align:center;padding:0 6px;">{{ s.imgLabel }}</span>
+                  <sc-if value="{{ s.selected }}" hint-placeholder-val="{{ false }}">
+                    <span style="position:absolute;inset:0;background:rgba(47,209,113,.22);display:flex;align-items:center;justify-content:center;"><span style="background:#2FD171;border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;">{{ s.checkIconDark }}</span></span>
+                  </sc-if>
+                </div>
+                <div style="padding:8px 10px 11px;">
+                  <div style="font-weight:700;color:#fff;font-size:13px;">{{ s.nome }}</div>
+                  <div style="font-size:10px;color:#8AA596;line-height:1.3;margin-top:2px;">{{ s.descricao }}</div>
+                </div>
+              </button>
+            </sc-for>
+          </div>
+
+          <!-- recheio da borda -->
+          <sc-if value="{{ showRecheio }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:20px;font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#6f8a7c;font-weight:700;margin-bottom:8px;">Recheio da borda</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+            <sc-for list="{{ bRecheios }}" as="r" hint-placeholder-count="3">
+              <button onclick="{{ r.onSelect }}" style="{{ r.style }}">
+                <span style="font-weight:600;color:#fff;font-size:13px;">{{ r.nome }}</span>
+                <sc-if value="{{ r.selected }}" hint-placeholder-val="{{ false }}">{{ r.checkIcon }}</sc-if>
+              </button>
+            </sc-for>
+          </div>
+          </sc-if>
+
+          <!-- estilo premium: pãozinho / vulcão -->
+          <sc-if value="{{ showPrem }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:20px;font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#6f8a7c;font-weight:700;margin-bottom:8px;">Estilo da borda premium</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <sc-for list="{{ bPremios }}" as="p" hint-placeholder-count="2">
+              <button onclick="{{ p.onSelect }}" style="{{ p.style }}">
+                <span style="font-weight:700;color:#fff;font-size:14px;">{{ p.nome }}</span>
+                <span style="font-size:11px;color:#8AA596;">{{ p.desc }}</span>
+              </button>
+            </sc-for>
+          </div>
+          </sc-if>
+          <div style="margin-top:20px;font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#6f8a7c;font-weight:700;margin-bottom:8px;">Observação</div>
+          <textarea value="{{ bObs }}" onchange="{{ onSetObs }}" rows="2" placeholder="Ex: sem cebola, bem assada…" style="width:100%;background:#0E1A12;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:11px 12px;color:#fff;font-size:13px;outline:none;font-family:inherit;resize:none;"></textarea>
+        </div>
+
+        <div style="position:sticky;bottom:0;display:flex;align-items:center;gap:12px;padding:14px 18px calc(14px + env(safe-area-inset-bottom));background:#0A130D;border-top:1px solid rgba(255,255,255,.08);">
+          <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border-radius:12px;padding:4px 6px;">
+            <button onclick="{{ onDecQty }}" style="width:30px;height:30px;border:none;background:none;color:#2FD171;font-size:20px;cursor:pointer;line-height:1;">−</button>
+            <span style="font-size:15px;font-weight:700;color:#fff;min-width:16px;text-align:center;">{{ bQty }}</span>
+            <button onclick="{{ onIncQty }}" style="width:30px;height:30px;border:none;background:none;color:#2FD171;font-size:20px;cursor:pointer;line-height:1;">+</button>
+          </div>
+          <button onclick="{{ onAddBuilder }}" style="{{ addBuilderStyle }}">
+            <span>Adicionar</span><span style="font-family:'Bebas Neue';font-size:20px;">{{ bPrecoFmt }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:430,&quot;height&quot;:920}}">
+class Component extends DCLogic {
+  LINHAS = [
+    { id: "sem", nome: "Sem Borda", curta: "Sem borda", desc: "Clássica, sem borda recheada", recheio: false, unico: false },
+    { id: "com", nome: "Com Borda Recheada", curta: "Com borda", desc: "Escolha o recheio da borda", recheio: true, unico: false },
+    { id: "premium", nome: "Premium · Vulcão & Pãozinho", curta: "Premium", desc: "Pizzas especiais premium", recheio: true, unico: true },
+  ];
+  TAMANHOS = [
+    { id: "g", nome: "Grande", fatias: 8 },
+    { id: "p", nome: "Pequena", fatias: 4 },
+  ];
+  RECHEIOS = [
+    { id: "mucarela", nome: "Muçarela" },
+    { id: "cheddar", nome: "Cheddar" },
+    { id: "catupiry", nome: "Catupiry" },
+  ];
+  PREMIOS = [
+    { id: "paozinho", nome: "Pãozinho", desc: "Borda em pãezinhos recheados" },
+    { id: "vulcao", nome: "Vulcão", desc: "Borda alta, super recheada" },
+  ];
+  SABORES = [
+    { id: "frango", nome: "Frango", descricao: "Frango, muçarela, catupiry, tomate fatiado, azeitona e orégano.", img: "assets/frango.jpg", premImg: { vulcao: "assets/frango-vulcao.jpg" }, hue: 40, sem: { g: 60, p: 32 }, com: { g: 66, p: 37 }, premium: 85 },
+    { id: "calabresa", nome: "Calabresa", descricao: "Muçarela, calabresa, cebola, azeitona e orégano.", img: "assets/calabresa.jpg", premImg: { vulcao: "assets/calabresa-vulcao.jpg" }, hue: 12, sem: { g: 60, p: 32 }, com: { g: 66, p: 37 }, premium: 85 },
+    { id: "calabria", nome: "Calábria", descricao: "Muçarela, calabresa, bacon, azeitona e orégano.", premImg: { vulcao: "assets/calabria-vulcao.jpg" }, hue: 14, sem: { g: 64, p: 36 }, com: { g: 70, p: 40 }, premium: 90 },
+    { id: "baiana", nome: "Baiana", descricao: "Muçarela, calabresa, tomate fatiado, molho de pimenta, cebola, azeitona e orégano.", img: "assets/baiana.jpg", hue: 8, sem: { g: 57, p: 31 }, com: { g: 66, p: 37 }, premium: 85 },
+    { id: "toscana", nome: "Toscana", descricao: "Muçarela, calabresa, tomate fatiado, cebola, folha de manjericão, azeitona e orégano.", img: "assets/toscana.jpg", hue: 18, sem: { g: 60, p: 36 }, com: { g: 67, p: 39 }, premium: 88 },
+    { id: "bacon", nome: "Bacon", descricao: "Muçarela, bacon, tomate fatiado, azeitona e orégano.", img: "assets/bacon.jpg", hue: 16, sem: { g: 66, p: 41 }, com: { g: 74, p: 45 }, premium: 90 },
+    { id: "portuguesa", nome: "Portuguesa", descricao: "Muçarela, presunto, ervilha, palmito, ovo, cebola, azeitona e orégano.", img: "assets/portuguesa.jpg", hue: 30, sem: { g: 64, p: 36 }, com: { g: 70, p: 40 }, premium: 90 },
+    { id: "palmito", nome: "Palmito", descricao: "Palmito, muçarela, catupiry, tomate fatiado, azeitona e orégano.", img: "assets/palmito.jpg", hue: 60, sem: { g: 60, p: 36 }, com: { g: 68, p: 38 }, premium: 90 },
+    { id: "brocolis", nome: "Brócolis", descricao: "Muçarela, brócolis, bacon, alho frito e azeitona.", img: "assets/brocolis.jpg", hue: 95, sem: { g: 58, p: 32 }, com: { g: 67, p: 37 }, premium: 85 },
+    { id: "carijo", nome: "Carijó", descricao: "Muçarela, milho, catupiry, tomate fatiado, orégano e azeitona.", img: "assets/carijo.jpg", hue: 48, sem: { g: 55, p: 30 }, com: { g: 64, p: 35 }, premium: 85 },
+    { id: "quatro-queijos", nome: "Quatro Queijos", descricao: "Muçarela, gorgonzola, provolone, catupiry, orégano e azeitona.", img: "assets/quatro-queijos.jpg", hue: 45, sem: { g: 66, p: 41 }, com: { g: 74, p: 44 }, premium: 100 },
+    { id: "pepperoni", nome: "Pepperoni", descricao: "Muçarela, pepperoni, azeitona e orégano.", img: "assets/pepperoni.jpg", hue: 6, sem: { g: 69, p: 43 }, com: { g: 79, p: 45 }, premium: 100 },
+    { id: "bacon-milho", nome: "Bacon e Milho", descricao: "Muçarela, bacon, milho, tomate fatiado, azeitona e orégano.", img: "assets/bacon-milho.jpg", hue: 38, sem: { g: 62, p: 37 }, com: { g: 68, p: 40 }, premium: 85 },
+    { id: "executiva", nome: "Executiva", descricao: "Frango, muçarela, bacon, champignon, catupiry, orégano e azeitona.", hue: 28, sem: { g: 63, p: 39 }, com: { g: 70, p: 41 }, premium: 90 },
+    { id: "lombo-provolone", nome: "Lombo e Provolone", descricao: "Muçarela, lombo, provolone, milho, ervilha, orégano e azeitona.", hue: 25, sem: { g: 75, p: 40 }, com: { g: 78, p: 43 }, premium: 90 },
+    { id: "atum", nome: "Atum", descricao: "Muçarela, atum, tomate fatiado, cebola, orégano e azeitona.", hue: 200, sem: { g: 69, p: 43 }, com: { g: 74, p: 45 }, premium: 100 },
+    { id: "napolitana", nome: "Napolitana", descricao: "Muçarela, presunto, tomate fatiado, azeitona e orégano.", hue: 20, sem: { g: 55, p: 30 }, com: { g: 62, p: 33 }, premium: 80 },
+    { id: "marguerita", nome: "Marguerita", descricao: "Muçarela, tomate fatiado, azeitona, orégano e folha de manjericão.", hue: 10, sem: { g: 64, p: 38 }, com: { g: 70, p: 41 }, premium: 85 },
+    { id: "lombo", nome: "Lombo", descricao: "Muçarela, lombo, catupiry, azeitona e orégano.", hue: 22, sem: { g: 63, p: 39 }, com: { g: 70, p: 41 }, premium: 95 },
+    { id: "moda-da-casa", nome: "Moda da Casa", descricao: "Frango, palmito, muçarela, catupiry, tomate fatiado, azeitona e orégano.", premImg: { vulcao: "assets/moda-da-casa-vulcao.jpg" }, hue: 38, sem: { g: 63, p: 39 }, com: { g: 70, p: 41 }, premium: 90 },
+    { id: "mucarela", nome: "Muçarela", descricao: "Muçarela, tomate fatiado, azeitona e orégano.", hue: 45, sem: { g: 62, p: 37 }, com: { g: 70, p: 40 }, premium: 85 },
+    { id: "moda-pizzaiolo", nome: "Moda do Pizzaiolo", descricao: "Palmito, muçarela, gorgonzola, parmesão ralado, catupiry, tomate fatiado, champignon, manjericão, azeitona e orégano.", hue: 50, sem: { g: 77, p: 46 }, com: { g: 85, p: 50 }, premium: 100 },
+    { id: "cachorro-quente", nome: "Cachorro Quente", descricao: "Salsicha, milho, ervilha, tomate picado, muçarela, bacon, cheddar e batata palha.", hue: 30, sem: { g: 58, p: 32 }, com: { g: 67, p: 37 }, premium: 85 },
+    { id: "nachos-burger", nome: "Nachos Hambúrguer", descricao: "Muçarela, hambúrguer artesanal, cream cheese, cheddar, doritos, pimenta biquinho, orégano e azeitona.", hue: 28, sem: { g: 77, p: 46 }, com: { g: 85, p: 50 }, premium: 100 },
+    { id: "frango-milho", nome: "Frango e Milho", descricao: "Frango, muçarela, milho, catupiry, tomate fatiado, orégano e azeitona.", hue: 44, sem: { g: 60, p: 36 }, com: { g: 70, p: 40 }, premium: null },
+  ];
+  CARDAPIOS = [
+    { id: "sem", nome: "Cardápio Sem Borda", desc: "25 sabores tradicionais, Grande ou Pequena", precoDesde: 30, badge: "Tradicional", hue: 140, img: "assets/cardapio-sem-borda.jpg", fit: "cover" },
+    { id: "com", nome: "Com Borda Recheada", desc: "Borda de Muçarela, Cheddar ou Catupiry", precoDesde: 33, badge: "Mais pedido", hue: 32, img: "assets/cardapio-com-borda.jpg", fit: "cover" },
+    { id: "premium", nome: "Premium Vulcão & Pãozinho", desc: "Pizzas especiais premium", precoDesde: 80, badge: "Novidade", hue: 18, img: "assets/cardapio-premium.jpg", fit: "cover" },
+  ];
+  TAXA = (window.GRINGO_CONFIG && window.GRINGO_CONFIG.taxaEntrega) || 7;
+  STATUS_FLOW = ["recebido", "preparando", "saiu", "entregue"];
+  STATUS_LABEL = { recebido: "Pedido recebido", preparando: "Preparando no forno", saiu: "Saiu para entrega", entregue: "Entregue" };
+  STATUS_DESC = { recebido: "Recebemos seu pedido e estamos confirmando.", preparando: "Nossos pizzaiolos estão montando sua pizza.", saiu: "Seu pedido está a caminho!", entregue: "Pedido finalizado. Bom apetite!" };
+  STATUS_ICON = { recebido: "📝", preparando: "🍕", saiu: "🛵", entregue: "🏠" };
+  ETA = Object.assign({ recebido: 0, preparando: 5, saiu: 25, entregue: 40 }, (window.GRINGO_CONFIG && window.GRINGO_CONFIG.etaMinutos) || {});
+  FRASES_RECEBIDO = ["Imprimindo seu pedido na cozinha…", "Analisando seu pedido…", "Confirmando seu pedido…", "Separando os ingredientes…", "Avisando o pizzaiolo…"];
+  FRASES_PREPARANDO = ["Abrindo a massa…", "Colocando molho de tomate…", "Colocando os ingredientes…", "Passando farinha…", "Colocando a pizza no forno…", "Embalando a pizza para entrega…"];
+  FRASES_SAIU = ["Colocando a pizza na mochila…", "Saindo para entrega…", "A caminho do seu endereço…", "Quase chegando…"];
+  TOPPINGS = ["#D8552F", "#E3A52E", "#6FA63C", "#C24233", "#E8B84B"];
+
+  state = {
+    view: "home",
+    variant: 2,
+    linha: "sem",
+    cart: [],
+    pedidos: [],
+    builder: null,
+    busca: "",
+    fraseIdx: 0,
+    splash: true,
+    endereco: { rua: "Rua das Pizzas", numero: "123", bairro: "Centro", cidade: "São Paulo", ref: "" },
+    addrOpen: false,
+    addrDraft: null,
+    chk: { modo: "delivery", nome: "", tel: "", rua: "", numero: "", bairro: "", cidade: "", pagamento: "pix" },
+  };
+
+  componentDidMount() {
+    this._splashFallback = setTimeout(() => this.endSplash(), 8000);
+    this._splashStall = setTimeout(() => { const v = this.introRef.current; if (this.state.splash && (!v || v.currentTime < 0.1)) this.endSplash(); }, 4500);
+    this._introKick = setInterval(() => {
+      const v = this.introRef.current;
+      if (!v) return;
+      try { v.muted = true; v.defaultMuted = true; if (v.paused) { const p = v.play(); if (p && p.catch) p.catch(() => {}); } } catch (e) {}
+      if (v.ended || v.currentTime >= 5.9) this.endSplash();
+    }, 200);
+    try {
+      const c = localStorage.getItem("gringo2_cart");
+      const p = localStorage.getItem("gringo2_pedidos");
+      const next = {};
+      if (c) next.cart = JSON.parse(c);
+      if (p) next.pedidos = JSON.parse(p);
+      const e = localStorage.getItem("gringo2_endereco");
+      if (e) next.endereco = JSON.parse(e);
+      if (Object.keys(next).length) this.setState(next);
+    } catch (e) {}
+    this._timer = setInterval(() => {
+      this.setState((prev) => ({
+        pedidos: prev.pedidos.map((p) => {
+          if (p.remoto || p.status === "entregue" || p.status === "saiu") return p;
+          const min = (Date.now() - p.data) / 60000;
+          let novo = "recebido";
+          if (min >= this.ETA.saiu) novo = "saiu";
+          else if (min >= this.ETA.preparando) novo = "preparando";
+          return novo !== p.status ? { ...p, status: novo } : p;
+        }),
+      }));
+    }, 4000);
+    this._paused = false;
+    this._carTimer = setInterval(() => {
+      const el = this.carRef.current || document.querySelector("[data-carousel]");
+      if (!el || this._paused) return;
+      const cards = el.children;
+      if (!cards.length) return;
+      const base = cards[0].offsetLeft;
+      let cur = 0, best = Infinity;
+      for (let i = 0; i < cards.length; i++) {
+        const d = Math.abs((cards[i].offsetLeft - base) - el.scrollLeft);
+        if (d < best) { best = d; cur = i; }
+      }
+      const next = (cur + 1) % cards.length;
+      this.tweenTo(el, cards[next].offsetLeft - base);
+    }, 10000);
+    this._fraseTimer = setInterval(() => this.setState((s) => ({ fraseIdx: (s.fraseIdx || 0) + 1 })), 2300);
+    this._statusTimer = setInterval(() => this._sincronizarStatus(), 15000);
+    setTimeout(() => this._sincronizarStatus(), 3000);
+  }
+  componentWillUnmount() { clearInterval(this._timer); clearInterval(this._statusTimer); clearInterval(this._carTimer); clearInterval(this._fraseTimer); clearInterval(this._introKick); clearTimeout(this._rt); clearTimeout(this._splashT); clearTimeout(this._splashFallback); clearTimeout(this._splashStall); cancelAnimationFrame(this._tw); }
+  endSplash = () => {
+    if (this.state.splashFade || !this.state.splash) return;
+    clearTimeout(this._splashT);
+    clearTimeout(this._splashFallback);
+    clearTimeout(this._splashStall);
+    clearInterval(this._introKick);
+    try { if (this.introRef && this.introRef.current) this.introRef.current.pause(); } catch (e) {}
+    this.setState({ splashFade: true });
+    setTimeout(() => this.setState({ splash: false }), 650);
+  };
+  componentDidUpdate(_pp, ps) {
+    try {
+      if (ps.cart !== this.state.cart) localStorage.setItem("gringo2_cart", JSON.stringify(this.state.cart));
+      if (ps.pedidos !== this.state.pedidos) localStorage.setItem("gringo2_pedidos", JSON.stringify(this.state.pedidos));
+      if (ps.endereco !== this.state.endereco) localStorage.setItem("gringo2_endereco", JSON.stringify(this.state.endereco));
+    } catch (e) {}
+  }
+
+  fmt = (n) => n.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+  ph = (hue) => ({ position: "absolute", inset: 0, background: "repeating-linear-gradient(45deg, hsl(" + hue + " 32% 17%) 0 9px, hsl(" + hue + " 32% 21%) 9px 18px)" });
+  imgSrc = (p) => (p && window.__resources && window.__resources[p]) || p;
+  imgOf = (s, linhaId, premId) => { if (!s) return null; if (linhaId === "premium") { if (s.premImg && premId && s.premImg[premId]) return s.premImg[premId]; if (s.imgPremium) return s.imgPremium; } return s.img; };
+  phFor = (s, linhaId, premId) => { const img = this.imgOf(s, linhaId, premId); return img ? { position: "absolute", inset: 0, backgroundImage: "url(" + this.imgSrc(img) + ")", backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundColor: "#fff" } : this.ph(s ? s.hue : 0); };
+
+  statusIconName = { recebido: "clipboard", preparando: "pizza", saiu: "bike", entregue: "home" };
+  _ICONS = {
+    cart: [["circle", { cx: 8, cy: 21, r: 1 }], ["circle", { cx: 19, cy: 21, r: 1 }], ["path", { d: "M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" }]],
+    pin: [["path", { d: "M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" }], ["circle", { cx: 12, cy: 10, r: 3 }]],
+    search: [["circle", { cx: 11, cy: 11, r: 8 }], ["path", { d: "m21 21-4.3-4.3" }]],
+    flame: [["path", { d: "M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5Z" }]],
+    pizza: [["path", { d: "M15 11h.01" }], ["path", { d: "M11 15h.01" }], ["path", { d: "M16 16h.01" }], ["path", { d: "m2 16 20 6-6-20A20 20 0 0 0 2 16" }], ["path", { d: "M5.71 17.11a17.04 17.04 0 0 1 11.4-11.4" }]],
+    receipt: [["path", { d: "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" }], ["polyline", { points: "14 2 14 8 20 8" }], ["line", { x1: 16, y1: 13, x2: 8, y2: 13 }], ["line", { x1: 16, y1: 17, x2: 8, y2: 17 }], ["line", { x1: 10, y1: 9, x2: 8, y2: 9 }]],
+    bike: [["circle", { cx: 18.5, cy: 17.5, r: 3.5 }], ["circle", { cx: 5.5, cy: 17.5, r: 3.5 }], ["circle", { cx: 15, cy: 5, r: 1 }], ["path", { d: "M12 17.5V14l-3-3 4-3 2 3h2" }]],
+    store: [["path", { d: "M2 7l2-4h16l2 4" }], ["path", { d: "M4 7v13a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V7" }], ["path", { d: "M2 7h20" }], ["path", { d: "M9 21v-6h6v6" }]],
+    zap: [["polygon", { points: "13 2 3 14 12 14 11 22 21 10 12 10 13 2" }]],
+    card: [["rect", { x: 2, y: 5, width: 20, height: 14, rx: 2 }], ["line", { x1: 2, y1: 10, x2: 22, y2: 10 }]],
+    cash: [["rect", { x: 2, y: 6, width: 20, height: 12, rx: 2 }], ["circle", { cx: 12, cy: 12, r: 2 }], ["path", { d: "M6 12h.01" }], ["path", { d: "M18 12h.01" }]],
+    clipboard: [["rect", { x: 8, y: 2, width: 8, height: 4, rx: 1 }], ["path", { d: "M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" }], ["path", { d: "m9 14 2 2 4-4" }]],
+    check: [["path", { d: "M20 6 9 17l-5-5" }]],
+    home: [["path", { d: "m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" }], ["polyline", { points: "9 22 9 12 15 12 15 22" }]],
+    clock: [["circle", { cx: 12, cy: 12, r: 10 }], ["polyline", { points: "12 6 12 12 16 14" }]],
+    package: [["path", { d: "m7.5 4.27 9 5.15" }], ["path", { d: "M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" }], ["polyline", { points: "3.29 7 12 12 20.71 7" }], ["line", { x1: 12, y1: 22, x2: 12, y2: 12 }]],
+    star: [["polygon", { points: "12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" }]],
+  };
+  ic(name, o) {
+    o = o || {};
+    const kids = (this._ICONS[name] || []).map((c, i) => React.createElement(c[0], { key: i, ...c[1] }));
+    return React.createElement("svg", { width: o.size || 20, height: o.size || 20, viewBox: "0 0 24 24", fill: o.fill || "none", stroke: o.color || "currentColor", strokeWidth: o.sw || 2, strokeLinecap: "round", strokeLinejoin: "round", style: { display: "block", flex: "0 0 auto" } }, kids);
+  }
+
+  // ===== Pizza realista por sabor =====
+  CHEESE = "radial-gradient(circle at 50% 42%, #f4d486 0%, #ecbf66 55%, #d99e48 100%)";
+  CHOC = "radial-gradient(circle at 50% 42%, #6e4626 0%, #432a14 100%)";
+  CREAM = "radial-gradient(circle at 50% 42%, #f4e6c2 0%, #e6cf9c 100%)";
+  RECIPES = {
+    calabresa: { base: this.CHEESE, groups: [{ c: "#9b3322", r: 7, n: 7 }, { c: "#cf6a47", r: 3, n: 4 }, { c: "#33421f", r: 1.6, n: 5 }] },
+    mussarela: { base: this.CHEESE, groups: [{ c: "#f1cd80", r: 10, n: 4, soft: true }, { c: "#3f5a25", r: 1.6, n: 7 }] },
+    portuguesa: { base: this.CHEESE, groups: [{ c: "#e6a79c", r: 5, n: 3 }, { c: "#f4e7a8", r: 4, n: 3 }, { c: "#5a7d33", r: 3, n: 4 }, { c: "#1f1b16", r: 3, n: 3 }, { c: "#cdb0cd", r: 3, n: 3 }] },
+    "frango-catupiry": { base: this.CHEESE, groups: [{ c: "#c79a5e", r: 5, n: 6 }, { c: "#fbf3df", r: 8, n: 3, soft: true }] },
+    "quatro-queijos": { base: "radial-gradient(circle at 50% 42%, #f6dd97 0%, #e3b75f 100%)", groups: [{ c: "#caa04f", r: 9, n: 4, soft: true }, { c: "#fbe6b0", r: 6, n: 3, soft: true }] },
+    pepperoni: { base: this.CHEESE, groups: [{ c: "#9e2b1f", r: 6, n: 9 }, { c: "#c4543f", r: 6, n: 0 }] },
+    vegetariana: { base: this.CHEESE, groups: [{ c: "#3f7d2e", r: 5, n: 4 }, { c: "#f2c43d", r: 3, n: 5 }, { c: "#c33a2a", r: 4, n: 3 }, { c: "#eadfae", r: 4, n: 3 }] },
+    bacon: { base: this.CHEESE, groups: [{ c: "#8c3a23", r: 6, n: 7 }, { c: "#5a2417", r: 3, n: 5 }] },
+    chocolate: { base: this.CHOC, groups: [{ c: "#3a2412", r: 6, n: 6, soft: true }, { c: "#caa066", r: 1.6, n: 11 }] },
+    "romeu-julieta": { base: this.CHEESE, groups: [{ c: "#b5223a", r: 7, n: 5 }, { c: "#d9476a", r: 3, n: 3 }] },
+    "banana-canela": { base: this.CREAM, groups: [{ c: "#f0d877", r: 6, n: 6 }, { c: "#a9743f", r: 1.4, n: 14 }] },
+    prestigio: { base: this.CHOC, groups: [{ c: "#f3ecdf", r: 3, n: 9 }, { c: "#3a2412", r: 6, n: 4, soft: true }] },
+  };
+  _scatter(K) {
+    const pts = [];
+    for (let k = 0; k < K; k++) {
+      const r = 41 * Math.sqrt((k + 0.5) / K);
+      const a = k * 137.5 * Math.PI / 180;
+      pts.push([50 + r * Math.cos(a), 50 + r * Math.sin(a)]);
+    }
+    return pts;
+  }
+  FLAVOR_COLOR = { frango: "#dcc07e", calabresa: "#a8542f", calabria: "#9c4a2c", baiana: "#b24a30", toscana: "#b06a3a", bacon: "#8c4a2c", portuguesa: "#cf9a5a", palmito: "#d9c98a", brocolis: "#6f9a44", carijo: "#e0c46a", "quatro-queijos": "#ecc878", pepperoni: "#cc3a2a", "bacon-milho": "#c8923f", executiva: "#b07a45", "lombo-provolone": "#c08a55", atum: "#9fb0a0", napolitana: "#c4543a", marguerita: "#c04a3a", lombo: "#b07a4a", "moda-da-casa": "#d6b070", mucarela: "#e8c06a", "moda-pizzaiolo": "#e0c070", "cachorro-quente": "#cf7a3a", "nachos-burger": "#c06a35", "frango-milho": "#dcc070" };
+  RECHEIO_COLOR = { mucarela: "#F2E9D0", cheddar: "#E8902F", catupiry: "#F0E3C2" };
+  flavorBg(id) {
+    const c = this.FLAVOR_COLOR[id] || "#d99e48";
+    return "radial-gradient(circle at 50% 38%, " + c + " 0%, " + c + " 70%, rgba(0,0,0,.16) 100%)";
+  }
+  wedgeClip(a0, a1) {
+    const segs = Math.max(2, Math.round((a1 - a0) / 8));
+    const pts = ["50% 50%"];
+    for (let i = 0; i <= segs; i++) {
+      const th = (a0 + (a1 - a0) * i / segs) * Math.PI / 180;
+      const x = 50 + 50 * Math.sin(th);
+      const y = 50 - 50 * Math.cos(th);
+      pts.push(x.toFixed(2) + "% " + y.toFixed(2) + "%");
+    }
+    return "polygon(" + pts.join(", ") + ")";
+  }
+  buildPizza(saborIds, fatias) {
+    const n = saborIds.length;
+    const layers = saborIds.map((id, i) => {
+      const clip = this.wedgeClip(i / n * 360, (i + 1) / n * 360);
+      return { style: { position: "absolute", inset: 0, clipPath: clip, WebkitClipPath: clip, background: this.flavorBg(id) } };
+    });
+    const cuts = [];
+    const fat = fatias || 8;
+    for (let i = 0; i < fat; i++) {
+      cuts.push({ style: { position: "absolute", left: "calc(50% - 0.75px)", top: 0, width: "1.5px", height: "50%", background: "rgba(74,38,10,.4)", transformOrigin: "bottom center", transform: "rotate(" + (i / fat * 360) + "deg)" } });
+    }
+    const dividers = n > 1 ? saborIds.map((id, i) => ({ style: { position: "absolute", left: "calc(50% - 1.25px)", top: 0, width: "2.5px", height: "50%", background: "rgba(50,22,4,.62)", transformOrigin: "bottom center", transform: "rotate(" + (i / n * 360) + "deg)" } })) : [];
+    const labels = saborIds.map((id, i) => {
+      const s = this.SABORES.find((x) => x.id === id);
+      const mid = (i + 0.5) / n * 360;
+      const rad = mid * Math.PI / 180;
+      const R = n === 1 ? 0 : 30;
+      const x = 50 + R * Math.sin(rad);
+      const y = 50 - R * Math.cos(rad);
+      return { nome: s.nome.split(" ")[0], style: { position: "absolute", left: x + "%", top: y + "%", transform: "translate(-50%,-50%)", fontSize: "9px", fontWeight: 700, color: "#fff", background: "rgba(20,10,4,.5)", padding: "1px 6px", borderRadius: "8px", whiteSpace: "nowrap", pointerEvents: "none" } };
+    });
+    const fracMap = { 2: "½", 3: "⅓", 4: "¼" };
+    const chips = saborIds.map((id) => {
+      const s = this.SABORES.find((x) => x.id === id);
+      return { nome: s.nome, hasFrac: n > 1, fracao: fracMap[n] || ("1/" + n), dotStyle: { width: "14px", height: "14px", borderRadius: "4px", background: this.FLAVOR_COLOR[id] || "#d99e48", flex: "0 0 auto" } };
+    });
+    return { layers, cuts, dividers, labels, chips };
+  }
+
+  go = (view) => this.setState({ view });
+  setVariant = (n) => this.setState({ variant: n });
+  carRef = React.createRef();
+  introRef = React.createRef();
+  setLinha = (id) => this.setState({ linha: id, busca: "" });
+  precoDe = (s, linha, tam) => { if (!s) return 0; if (linha === "premium") return s.premium; return s[linha] ? s[linha][tam] : null; };
+  pauseCar = () => { this._paused = true; };
+  resumeCar = () => { this._paused = false; };
+  resumeCarSoon = () => { clearTimeout(this._rt); this._rt = setTimeout(() => { this._paused = false; }, 1500); };
+  tweenTo = (el, target) => {
+    cancelAnimationFrame(this._tw);
+    const start = el.scrollLeft;
+    const dist = target - start;
+    if (Math.abs(dist) < 1) return;
+    const dur = 450, t0 = performance.now();
+    const ease = (p) => p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+    const step = (now) => {
+      const p = Math.min(1, (now - t0) / dur);
+      el.scrollLeft = start + dist * ease(p);
+      if (p < 1) this._tw = requestAnimationFrame(step);
+    };
+    this._tw = requestAnimationFrame(step);
+  };
+  setBusca = (e) => { const v = e.target.value; this.setState({ busca: v }); };
+  clearBusca = () => this.setState({ busca: "" });
+
+  onCarouselDown = (e) => {
+    if (e.button !== undefined && e.button !== 0) return;
+    const el = e.currentTarget;
+    const startX = e.clientX;
+    const startScroll = el.scrollLeft;
+    let moved = false;
+    this._paused = true;
+    cancelAnimationFrame(this._tw);
+    el.style.cursor = "grabbing";
+    const move = (ev) => {
+      const dx = ev.clientX - startX;
+      if (Math.abs(dx) > 3) moved = true;
+      el.scrollLeft = startScroll - dx;
+    };
+    const up = () => {
+      document.removeEventListener("mousemove", move);
+      document.removeEventListener("mouseup", up);
+      el.style.cursor = "grab";
+      this.resumeCarSoon();
+      if (moved) {
+        const block = (ev) => { ev.preventDefault(); ev.stopPropagation(); el.removeEventListener("click", block, true); };
+        el.addEventListener("click", block, true);
+      }
+    };
+    document.addEventListener("mousemove", move);
+    document.addEventListener("mouseup", up);
+  };
+
+  openAddr = () => this.setState((s) => ({ addrOpen: true, addrDraft: { ...s.endereco } }));
+  closeAddr = () => this.setState({ addrOpen: false });
+  setAddr = (k) => (e) => { const v = e.target.value; this.setState((s) => ({ addrDraft: { ...(s.addrDraft || s.endereco), [k]: v } })); };
+  saveAddr = () => this.setState((s) => {
+    const d = s.addrDraft || s.endereco;
+    if (!(d.rua && d.numero && d.bairro && d.cidade)) return {};
+    return { endereco: d, addrOpen: false, chk: { ...s.chk, rua: d.rua, numero: d.numero, bairro: d.bairro, cidade: d.cidade } };
+  });
+
+  maxSab = (linha, tamId) => (linha && linha.unico) ? 1 : (tamId === "g" ? 2 : 1);
+  openBuilder = (saborId, linhaId) => this.setState((s) => {
+    const lid = linhaId || s.linha || "sem";
+    let sid = saborId;
+    if (lid === "premium") { const sb = this.SABORES.find((x) => x.id === sid); if (!sb || sb.premium == null) sid = this.SABORES.find((x) => x.premium != null).id; }
+    return { builder: { linhaId: lid, saborIds: [sid], tamanhoId: "g", recheioId: "mucarela", premId: "vulcao", obs: "", qty: 1 } };
+  });
+  closeBuilder = () => this.setState({ builder: null });
+  setBuilderPrem = (id) => this.setState((s) => ({ builder: { ...s.builder, premId: id } }));
+  setBuilderLinha = (id) => this.setState((s) => {
+    const b = s.builder;
+    let arr = b.saborIds.slice();
+    if (id === "premium") { arr = arr.filter((sid) => { const sb = this.SABORES.find((x) => x.id === sid); return sb && sb.premium != null; }); if (!arr.length) arr = [this.SABORES.find((x) => x.premium != null).id]; }
+    const linha = this.LINHAS.find((l) => l.id === id);
+    arr = arr.slice(0, Math.max(1, this.maxSab(linha, b.tamanhoId)));
+    return { builder: { ...b, linhaId: id, saborIds: arr } };
+  });
+  setBuilderSabor = (id) => this.setState((s) => {
+    const b = s.builder;
+    const linha = this.LINHAS.find((l) => l.id === b.linhaId);
+    const max = this.maxSab(linha, b.tamanhoId);
+    let arr = b.saborIds;
+    if (arr.includes(id)) arr = arr.length === 1 ? arr : arr.filter((x) => x !== id);
+    else if (max === 1) arr = [id];
+    else if (arr.length >= max) arr = [...arr.slice(1), id];
+    else arr = [...arr, id];
+    return { builder: { ...b, saborIds: arr } };
+  });
+  setBuilderSize = (id) => this.setState((s) => {
+    const b = s.builder;
+    const linha = this.LINHAS.find((l) => l.id === b.linhaId);
+    const arr = b.saborIds.slice(0, Math.max(1, this.maxSab(linha, id)));
+    return { builder: { ...b, tamanhoId: id, saborIds: arr } };
+  });
+  setBuilderRecheio = (id) => this.setState((s) => ({ builder: { ...s.builder, recheioId: id } }));
+  setBuilderObs = (e) => { const v = e.target.value; this.setState((s) => ({ builder: { ...s.builder, obs: v } })); };
+  incQty = () => this.setState((s) => ({ builder: { ...s.builder, qty: s.builder.qty + 1 } }));
+  decQty = () => this.setState((s) => ({ builder: { ...s.builder, qty: Math.max(1, s.builder.qty - 1) } }));
+
+  addBuilderToCart = () => {
+    const b = this.state.builder;
+    const linha = this.LINHAS.find((l) => l.id === b.linhaId);
+    const sabores = b.saborIds.map((id) => this.SABORES.find((s) => s.id === id)).filter(Boolean);
+    const tam = this.TAMANHOS.find((t) => t.id === b.tamanhoId);
+    const unit = Math.max.apply(null, sabores.map((s) => this.precoDe(s, linha.id, b.tamanhoId) || 0));
+    const recheioNome = linha.recheio ? this.RECHEIOS.find((r) => r.id === b.recheioId).nome : null;
+    const tamLabel = linha.unico ? "Tamanho único" : tam.nome;
+    const nomes = sabores.map((s) => s.nome).join(" + ");
+    const parts = [linha.curta, tamLabel];
+    if (linha.unico) { const pr = this.PREMIOS.find((p) => p.id === b.premId); if (pr) parts.push("Borda " + pr.nome); }
+    if (recheioNome) parts.push("Recheio " + recheioNome);
+    const item = { id: this._uid(), tipo: "pizza", hue: sabores[0].hue, img: this.imgOf(sabores[0], linha.id, b.premId), titulo: nomes, sub: parts.join(" · "), obs: b.obs, qty: b.qty, unit };
+    this.setState((s) => ({ cart: [...s.cart, item], builder: null, view: "cart" }));
+  };
+  cartQty = (id, d) => this.setState((s) => ({
+    cart: s.cart.map((it) => it.id === id ? { ...it, qty: it.qty + d } : it).filter((it) => it.qty > 0),
+  }));
+
+  updChk = (k) => (e) => { const v = e.target.value; this.setState((s) => ({ chk: { ...s.chk, [k]: v } })); };
+  setModo = (m) => this.setState((s) => ({ chk: { ...s.chk, modo: m } }));
+  setPag = (p) => this.setState((s) => ({ chk: { ...s.chk, pagamento: p } }));
+
+  confirmarPedido = () => {
+    const { cart, chk } = this.state;
+    const subtotal = cart.reduce((a, i) => a + i.unit * i.qty, 0);
+    const taxa = chk.modo === "delivery" ? this.TAXA : 0;
+    const desconto = chk.pagamento === "pix" ? subtotal * 0.1 : 0;
+    if (!this._valido()) return;
+    const pedido = {
+      id: this._uid().slice(0, 6).toUpperCase(),
+      data: Date.now(),
+      itens: cart,
+      modo: chk.modo,
+      pagamento: chk.pagamento,
+      endereco: chk.modo === "delivery" ? { rua: chk.rua, numero: chk.numero, bairro: chk.bairro, cidade: chk.cidade } : null,
+      cliente: { nome: chk.nome, tel: chk.tel },
+      subtotal, taxa, desconto,
+      total: subtotal + taxa - desconto,
+      status: "recebido",
+      entregador: ["Bruno", "Carla", "Diego", "Marina"][Math.floor(Math.random() * 4)],
+    };
+    this._enviarPedido(pedido);
+    this.setState((s) => ({ pedidos: [pedido, ...s.pedidos], cart: [], view: "pedidos" }));
+  };
+  _mensagemPedido = (p) => {
+    const L = [];
+    L.push("*NOVO PEDIDO — Gringo Pizzaria* \uD83C\uDF55");
+    L.push("Pedido *#" + p.id + "*");
+    L.push("");
+    L.push("*Itens:*");
+    p.itens.forEach((it) => {
+      L.push("\u2022 " + it.qty + "x " + it.titulo + " (" + it.sub + ") — " + this.fmt(it.unit * it.qty));
+      if (it.obs) L.push("   Obs: " + it.obs);
+    });
+    L.push("");
+    if (p.modo === "delivery" && p.endereco) {
+      L.push("*Entrega:* " + p.endereco.rua + ", " + p.endereco.numero + " — " + p.endereco.bairro + ", " + p.endereco.cidade);
+    } else {
+      L.push("*Retirada no balcão*");
+    }
+    L.push("*Cliente:* " + p.cliente.nome + " — " + p.cliente.tel);
+    L.push("");
+    L.push("Subtotal: " + this.fmt(p.subtotal));
+    if (p.taxa > 0) L.push("Taxa de entrega: " + this.fmt(p.taxa));
+    if (p.desconto > 0) L.push("Desconto Pix: -" + this.fmt(p.desconto));
+    L.push("*Total: " + this.fmt(p.total) + "*");
+    const PAG = { pix: "Pix", cartao: "Cart\u00e3o na entrega", dinheiro: "Dinheiro" };
+    L.push("*Pagamento:* " + (PAG[p.pagamento] || p.pagamento) + " (a combinar na entrega/retirada — nada foi cobrado pelo app)");
+    return L.join("\n");
+  };
+  _enviarPedido = (pedido) => {
+    const cfg = window.GRINGO_CONFIG || {};
+    if (cfg.webhookPedidos) {
+      try {
+        fetch(cfg.webhookPedidos, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(pedido) })
+          .then((r) => r.json())
+          .then((res) => { if (res && res.ok) this._marcarRemoto(pedido.id); })
+          .catch(() => {});
+      } catch (e) {}
+    }
+    if (cfg.whatsapp) {
+      const num = String(cfg.whatsapp).replace(/\D/g, "");
+      const url = "https://wa.me/" + num + "?text=" + encodeURIComponent(this._mensagemPedido(pedido));
+      try {
+        const a = document.createElement("a");
+        a.href = url; a.target = "_blank"; a.rel = "noopener";
+        document.body.appendChild(a); a.click(); a.remove();
+      } catch (e) { location.href = url; }
+    }
+  };
+  _marcarRemoto = (id) => this.setState((s) => ({ pedidos: s.pedidos.map((p) => p.id === id ? { ...p, remoto: true } : p) }));
+  _sincronizarStatus = () => {
+    const cfg = window.GRINGO_CONFIG || {};
+    if (!cfg.statusUrl) return;
+    this.state.pedidos
+      .filter((p) => p.remoto && p.status !== "entregue")
+      .forEach((p) => {
+        fetch(cfg.statusUrl + "?id=" + encodeURIComponent(p.id))
+          .then((r) => r.json())
+          .then((res) => {
+            if (!res || !res.ok || !this.STATUS_FLOW.includes(res.status) || res.status === p.status) return;
+            this.setState((s) => ({ pedidos: s.pedidos.map((x) => x.id === p.id ? { ...x, status: res.status } : x) }));
+          })
+          .catch(() => {});
+      });
+  };
+  confirmarRecebimento = (id) => this.setState((s) => ({ pedidos: s.pedidos.map((p) => p.id === id ? { ...p, status: "entregue" } : p) }));
+
+  _uid = () => (crypto.randomUUID ? crypto.randomUUID() : "id" + Math.random().toString(36).slice(2) + Date.now().toString(36));
+  _valido = () => { const c = this.state.chk; return !!(c.nome && c.tel && (c.modo === "retirada" || (c.rua && c.numero && c.bairro && c.cidade))); };
+
+  renderVals() {
+    const st = this.state;
+    const cartCount = st.cart.reduce((a, i) => a + i.qty, 0);
+    const subtotal = st.cart.reduce((a, i) => a + i.unit * i.qty, 0);
+    const chipStyle = (active) => ({
+      whiteSpace: "nowrap", cursor: "pointer", fontSize: "13px", fontWeight: 600, padding: "8px 14px", borderRadius: "11px",
+      border: active ? "1px solid #2FD171" : "1px solid rgba(255,255,255,.1)",
+      background: active ? "#2FD171" : "transparent", color: active ? "#04140A" : "#8AA596",
+    });
+    const variantBtn = (active) => ({
+      cursor: "pointer", fontSize: "11px", fontWeight: 700, padding: "6px 11px", borderRadius: "8px", border: "none",
+      background: active ? "#2FD171" : "transparent", color: active ? "#04140A" : "#8AA596",
+    });
+
+    // sabores por linha + busca
+    const q = (st.busca || "").trim().toLowerCase();
+    const linhaAtual = st.linha || "sem";
+    let baseList = this.SABORES;
+    if (linhaAtual === "premium") baseList = baseList.filter((s) => s.premium != null);
+    const sab = q ? baseList.filter((s) => (s.nome + " " + s.descricao).toLowerCase().includes(q)) : baseList;
+    const sabores = sab.map((s) => ({
+      id: s.id, nome: s.nome, descricao: s.descricao, popular: false,
+      precoLabel: linhaAtual === "premium" ? "único" : "a partir de",
+      precoDesdeFmt: this.fmt(linhaAtual === "premium" ? s.premium : this.precoDe(s, linhaAtual, "p")),
+      imgLabel: this.imgOf(s, linhaAtual) ? "" : "foto pizza " + s.nome.toLowerCase(),
+      phStyle: this.phFor(s, linhaAtual), starIcon: this.ic("star", { size: 12, color: "#FFC53D", fill: "#FFC53D" }), onMontar: () => this.openBuilder(s.id, linhaAtual),
+    }));
+
+    const combos = this.CARDAPIOS.map((c) => ({
+      nome: c.nome, desc: c.desc, badge: c.badge, imgLabel: c.img ? "" : c.nome.toLowerCase(),
+      precoFmt: this.fmt(c.precoDesde), antigoFmt: "A partir de",
+      phStyle: c.img ? { position: "absolute", inset: 0, backgroundImage: "url(" + this.imgSrc(c.img) + ")", backgroundSize: c.fit || "contain", backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundColor: "#0a130d" } : this.ph(c.hue),
+      onAdd: () => this.setLinha(c.id),
+    }));
+
+    const filtros = this.LINHAS.map((l) => ({ label: l.curta, style: chipStyle(linhaAtual === l.id), onClick: () => this.setLinha(l.id) }));
+    const variants = [[1, "Vitrine"], [2, "Express"], [3, "Combos"]]
+      .map(([n, label]) => ({ label, style: variantBtn(st.variant === n), onClick: () => this.setVariant(n) }));
+
+    // cart items
+    const cartItems = st.cart.map((it) => ({
+      titulo: it.titulo, sub: it.sub, hasObs: !!it.obs, obs: it.obs, qty: it.qty,
+      icon: this.ic(it.tipo === "combo" ? "package" : "pizza", { size: 24, color: "#fff" }),
+      showIcon: !it.img,
+      precoFmt: this.fmt(it.unit * it.qty), phStyle: this.phFor(it),
+      onInc: () => this.cartQty(it.id, 1), onDec: () => this.cartQty(it.id, -1),
+    }));
+
+    // checkout
+    const chk = st.chk;
+    const taxa = chk.modo === "delivery" ? this.TAXA : 0;
+    const desconto = chk.pagamento === "pix" ? subtotal * 0.1 : 0;
+    const total = subtotal + taxa - desconto;
+    const modoBtn = (active) => ({
+      cursor: "pointer", textAlign: "center", padding: "14px 10px", borderRadius: "14px",
+      border: active ? "1px solid #2FD171" : "1px solid rgba(255,255,255,.1)",
+      background: active ? "rgba(47,209,113,.12)" : "#0E1A12", color: "#fff",
+    });
+    const pagBtn = (active) => ({
+      display: "flex", alignItems: "center", gap: "12px", cursor: "pointer", padding: "13px 14px", borderRadius: "13px",
+      border: active ? "1px solid #2FD171" : "1px solid rgba(255,255,255,.1)",
+      background: active ? "rgba(47,209,113,.1)" : "#0E1A12", width: "100%",
+    });
+    const PAGIC = { pix: "zap", cartao: "card", dinheiro: "cash" };
+    const pagamentos = [
+      { id: "pix", label: "Pix", sub: "10% de desconto na hora" },
+      { id: "cartao", label: "Cartão na entrega", sub: "Crédito ou débito" },
+      { id: "dinheiro", label: "Dinheiro", sub: "Informe o troco ao entregador" },
+    ].map((p) => ({ ...p, icon: this.ic(PAGIC[p.id], { size: 18, color: "#fff", fill: p.id === "pix" ? "#fff" : "none" }), active: chk.pagamento === p.id, style: pagBtn(chk.pagamento === p.id), onClick: () => this.setPag(p.id) }));
+    const valido = this._valido();
+    const mkField = (k, ph) => ({ value: chk[k], onChange: this.updChk(k) });
+
+    // builder
+    let builderVals = {};
+    if (st.builder) {
+      const b = st.builder;
+      const linha = this.LINHAS.find((l) => l.id === b.linhaId) || this.LINHAS[0];
+      const sabores = b.saborIds.map((id) => this.SABORES.find((s) => s.id === id)).filter(Boolean);
+      const primeiro = sabores[0] || this.SABORES[0];
+      const tam = this.TAMANHOS.find((x) => x.id === b.tamanhoId) || this.TAMANHOS[0];
+      const maxSab = this.maxSab(linha, b.tamanhoId);
+      const unit = Math.max.apply(null, sabores.map((s) => this.precoDe(s, linha.id, b.tamanhoId) || 0));
+      const lineBtn = (active) => ({ cursor: "pointer", textAlign: "left", padding: "11px 12px", borderRadius: "13px", border: active ? "2px solid #2FD171" : "2px solid rgba(255,255,255,.1)", background: active ? "rgba(47,209,113,.1)" : "#0E1A12", display: "flex", flexDirection: "column", gap: "2px" });
+      const sizeBtn = (active) => ({ cursor: "pointer", textAlign: "left", padding: "11px 12px", borderRadius: "13px", border: active ? "1px solid #2FD171" : "1px solid rgba(255,255,255,.1)", background: active ? "rgba(47,209,113,.1)" : "#0E1A12", display: "flex", flexDirection: "column", gap: "1px" });
+      const saborBtn = (active) => ({ display: "flex", flexDirection: "column", textAlign: "left", padding: 0, cursor: "pointer", borderRadius: "14px", overflow: "hidden", border: active ? "2px solid #2FD171" : "2px solid rgba(255,255,255,.1)", background: "#0E1A12", width: "100%" });
+      const rechBtn = (active) => ({ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "6px", textAlign: "left", cursor: "pointer", padding: "12px 13px", borderRadius: "13px", border: active ? "1px solid #2FD171" : "1px solid rgba(255,255,255,.1)", background: active ? "rgba(47,209,113,.1)" : "#0E1A12" });
+
+      const bLinhas = this.LINHAS.map((l) => ({ nome: l.nome, desc: l.desc, selected: b.linhaId === l.id, style: lineBtn(b.linhaId === l.id), onSelect: () => this.setBuilderLinha(l.id) }));
+      const bSizes = this.TAMANHOS.map((x) => ({ nome: x.nome, fatias: x.fatias, subLabel: x.fatias + " fatias · " + (this.maxSab(linha, x.id) > 1 ? "até " + this.maxSab(linha, x.id) + " sabores" : "1 sabor"), precoFmt: this.fmt(Math.max.apply(null, sabores.map((s) => this.precoDe(s, linha.id, x.id) || 0))), style: sizeBtn(b.tamanhoId === x.id), onSelect: () => this.setBuilderSize(x.id) }));
+      const listaSab = this.SABORES.filter((s) => linha.id !== "premium" || s.premium != null);
+      const bSabores = listaSab.map((s) => ({ nome: s.nome, descricao: s.descricao, selected: b.saborIds.includes(s.id), style: saborBtn(b.saborIds.includes(s.id)), phStyle: this.phFor(s, linha.id, b.premId), imgLabel: this.imgOf(s, linha.id, b.premId) ? "" : "foto pizza " + s.nome.toLowerCase(), checkIconDark: this.ic("check", { size: 18, color: "#04140A" }), onToggle: () => this.setBuilderSabor(s.id) }));
+      const bRecheios = this.RECHEIOS.map((r) => ({ nome: r.nome, selected: b.recheioId === r.id, style: rechBtn(b.recheioId === r.id), checkIcon: this.ic("check", { size: 16, color: "#2FD171" }), onSelect: () => this.setBuilderRecheio(r.id) }));
+
+      const fatias = linha.unico ? 8 : tam.fatias;
+      const pz = this.buildPizza(b.saborIds, fatias);
+      const isPrem = linha.unico;
+      const premId = b.premId || "vulcao";
+      let crustColor = linha.recheio ? (this.RECHEIO_COLOR[b.recheioId] || "#E0A94B") : "#E0A94B";
+      let crustEdge = linha.recheio ? "rgba(0,0,0,.4)" : "#B5832E";
+      let crustW = 9;
+      let discBumps = [];
+      if (isPrem && premId === "vulcao") {
+        crustW = 17; crustEdge = "rgba(90,40,10,.55)";
+        crustColor = this.RECHEIO_COLOR[b.recheioId] || "#E0A94B";
+      } else if (isPrem && premId === "paozinho") {
+        crustW = 6; crustColor = "#E0A94B"; crustEdge = "rgba(120,80,30,.4)";
+        const NB = 14, fill = this.RECHEIO_COLOR[b.recheioId] || "#E8B45A";
+        for (let i = 0; i < NB; i++) {
+          const ang = i / NB * 360, rad = ang * Math.PI / 180, R = 48.5;
+          discBumps.push({ style: { position: "absolute", left: (50 + R * Math.sin(rad)) + "%", top: (50 - R * Math.cos(rad)) + "%", transform: "translate(-50%,-50%)", width: "20px", height: "20px", borderRadius: "50%", background: "radial-gradient(circle at 38% 32%, #f0c878, " + "#cf9a4a)", boxShadow: "inset 0 0 0 3px " + fill + ", 0 1px 2px rgba(0,0,0,.4)", zIndex: 3, pointerEvents: "none" } });
+        }
+      }
+      const discInset = isPrem && premId === "vulcao"
+        ? { position: "absolute", inset: 0, borderRadius: "50%", boxShadow: "inset 0 0 0 7px rgba(120,70,20,.45), inset 0 0 26px rgba(50,20,0,.5)", pointerEvents: "none", zIndex: 3 }
+        : null;
+      const crustColorBase = crustColor;
+      const crustColorFinal = linha.recheio ? (this.RECHEIO_COLOR[b.recheioId] || "#E0A94B") : "#E0A94B";
+      const premPhoto = isPrem ? ((primeiro.premImg && primeiro.premImg[premId]) || primeiro.imgPremium) : null;
+      const showDiscPhoto = !!premPhoto && b.saborIds.length === 1;
+      const discPhotoStyle = premPhoto ? { width: "188px", height: "188px", flex: "0 0 auto", backgroundImage: "url(" + this.imgSrc(premPhoto) + ")", backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundPosition: "center", filter: "drop-shadow(0 12px 22px rgba(0,0,0,.45))" } : { display: "none" };
+      const discStyle = { position: "absolute", inset: 0, borderRadius: "50%", border: crustW + "px solid " + crustColorFinal, boxShadow: "0 0 0 3px " + crustEdge + ", 0 14px 30px rgba(0,0,0,.45)", overflow: "hidden", background: "#e8b95f" };
+      const discWrapStyle = { position: "relative", width: "172px", height: "172px", flex: "0 0 auto" };
+      const bordaSwatchStyle = { width: "14px", height: "14px", borderRadius: "4px", background: crustColorFinal, flex: "0 0 auto" };
+      const bordaNome = linha.recheio ? this.RECHEIOS.find((r) => r.id === b.recheioId).nome : "Sem borda";
+      const premBtn = (active) => ({ display: "flex", flexDirection: "column", gap: "2px", textAlign: "left", cursor: "pointer", padding: "12px 13px", borderRadius: "13px", border: active ? "2px solid #2FD171" : "2px solid rgba(255,255,255,.1)", background: active ? "rgba(47,209,113,.1)" : "#0E1A12" });
+      const bPremios = this.PREMIOS.map((p) => ({ nome: p.nome, desc: p.desc, selected: premId === p.id, style: premBtn(premId === p.id), onSelect: () => this.setBuilderPrem(p.id) }));
+
+      builderVals = {
+        builderOpen: true,
+        bLinhas, bSizes, bSabores, bRecheios, bPremios,
+        showSizes: !linha.unico, showRecheio: linha.recheio, showPrem: isPrem,
+        showDiscDraw: !(!!premPhoto && b.saborIds.length === 1),
+        bLinhaNome: linha.nome,
+        discStyle, discWrapStyle, discInset, discBumps, hasInset: !!discInset, showDiscPhoto, discPhotoStyle, bordaSwatchStyle, bordaNome,
+        pizzaLayers: pz.layers, pizzaCuts: pz.cuts, pizzaDividers: pz.dividers, pizzaWedges: pz.labels, pizzaChips: pz.chips,
+        bSaboresContador: maxSab > 1 ? sabores.length + " de " + maxSab + " sabores" : "Escolha 1 sabor",
+        bObs: b.obs, onSetObs: this.setBuilderObs,
+        bQty: b.qty, onIncQty: this.incQty, onDecQty: this.decQty,
+        bPrecoFmt: this.fmt(unit * b.qty),
+        onAddBuilder: this.addBuilderToCart, onCloseBuilder: this.closeBuilder,
+        addBuilderStyle: { flex: 1, display: "flex", alignItems: "center", justifyContent: "space-between", background: "#2FD171", color: "#04140A", border: "none", borderRadius: "14px", padding: "14px 18px", fontWeight: 800, fontSize: "14px", cursor: "pointer" },
+      };
+    } else {
+      builderVals = { builderOpen: false };
+    }
+
+    // pedidos
+    const pedidos = st.pedidos.map((p) => {
+      const idx = this.STATUS_FLOW.indexOf(p.status);
+      const entregue = p.status === "entregue";
+      const aguardando = p.status === "saiu";
+      const previsaoTs = p.data + this.ETA.entregue * 60000;
+      const minRest = Math.max(0, Math.round((previsaoTs - Date.now()) / 60000));
+      const hora = (ts) => new Date(ts).toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+      const pct = entregue ? 100 : Math.min(100, Math.round(((idx + 0.5) / this.STATUS_FLOW.length) * 100));
+      const CURTO = { recebido: "Recebido", preparando: "Preparo", saiu: "A caminho", entregue: "Entregue" };
+      const ultimo = this.STATUS_FLOW.length - 1;
+      const lineCol = (cond) => cond ? "#2FD171" : "rgba(255,255,255,.12)";
+      const steps = this.STATUS_FLOW.map((s, i) => {
+        const current = i === idx && !entregue;
+        const reached = entregue || i <= idx;
+        const iconColor = reached ? "#04140A" : "#6f8a7c";
+        const iconEl = this.ic(s === "entregue" ? "check" : this.statusIconName[s], { size: 16, color: iconColor });
+        return {
+          icon: iconEl,
+          curto: CURTO[s],
+          nodeStyle: { width: "40px", height: "40px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", flex: "0 0 auto", background: reached ? "#2FD171" : "rgba(255,255,255,.08)", boxShadow: current ? "0 0 0 4px rgba(47,209,113,.22)" : "none", animation: current ? "gpPulse 1.6s ease-in-out infinite" : "none" },
+          lineLeftStyle: { flex: 1, height: "3px", borderRadius: "2px", background: i === 0 ? "transparent" : lineCol(reached) },
+          lineRightStyle: { flex: 1, height: "3px", borderRadius: "2px", background: i === ultimo ? "transparent" : lineCol(entregue || (i + 1) <= idx) },
+          labelStyle: { fontSize: "10px", fontWeight: 700, textAlign: "center", color: reached ? "#fff" : "#6f8a7c", lineHeight: 1.2 },
+        };
+      });
+      const segFill = (i) => {
+        if (entregue || idx > i) return { position: "absolute", inset: 0, background: "#2FD171" };
+        if (idx === i) return { position: "absolute", top: 0, bottom: 0, left: 0, width: "45%", borderRadius: "3px", background: "linear-gradient(90deg, rgba(47,209,113,0), #2FD171, rgba(47,209,113,0))", animation: "gpLoadBar 1.25s ease-in-out infinite" };
+        return { display: "none" };
+      };
+      const segBars = [0, 1, 2].map((i) => ({ fillStyle: segFill(i) }));
+      const showFrases = !entregue;
+      const fraseList = idx === 0 ? this.FRASES_RECEBIDO : idx === 1 ? this.FRASES_PREPARANDO : this.FRASES_SAIU;
+      const fraseAtual = fraseList[(st.fraseIdx || 0) % fraseList.length];
+      const itensResumo = p.itens.map((it) => ({ texto: (it.qty > 1 ? it.qty + "x " : "") + it.titulo + " — " + this.fmt(it.unit * it.qty) }));
+      return {
+        id: p.id, modoLabel: p.modo === "delivery" ? "Delivery" : "Retirada", totalFmt: this.fmt(p.total),
+        etaTitulo: entregue ? "Entregue às" : p.modo === "delivery" ? "Chega em" : "Pronto em",
+        etaValor: entregue ? hora(Date.now()) : aguardando ? "instantes" : "~" + minRest + " min",
+        etaSub: entregue ? "" : "Previsão " + hora(previsaoTs),
+        progressStyle: { height: "100%", width: pct + "%", background: "#2FD171", transition: "width .5s ease" },
+        segBars, showFrases, fraseAtual,
+        steps, aguardando, entregadorNome: p.entregador,
+        bikeIcon: this.ic("bike", { size: 18, color: "#2FD171" }),
+        confirmIcon: this.ic("check", { size: 16, color: "#04140A" }),
+        onConfirmar: () => this.confirmarRecebimento(p.id),
+        qtdItens: p.itens.length, itensResumo,
+        temEndereco: !!p.endereco,
+        pinIcon: this.ic("pin", { size: 13, color: "#6f8a7c" }),
+        enderecoTexto: p.endereco ? (p.endereco.rua + ", " + p.endereco.numero + " — " + p.endereco.bairro + ", " + p.endereco.cidade) : "",
+      };
+    });
+
+    const navColor = (v) => st.view === v ? "#2FD171" : "#5f7a6c";
+    const _now = new Date();
+    const _h = _now.getHours();
+    const _dia = _now.getDay();
+    const aberto = _dia !== 2 && _h >= 18 && _h < 23;
+    const ad = st.addrDraft || st.endereco;
+    const af = (k) => ({ value: ad[k] || "", onChange: this.setAddr(k) });
+    const addrValido = !!(ad.rua && ad.numero && ad.bairro && ad.cidade);
+    const IC = {
+      icCartHeader: this.ic("cart", { size: 18, color: "#2FD171" }),
+      icSearch: this.ic("search", { size: 18, color: "#6f8a7c" }),
+      icPin: this.ic("pin", { size: 15, color: "#2FD171" }),
+      icFlame: this.ic("flame", { size: 22, color: "#FF7A3D" }),
+      icCartBar: this.ic("cart", { size: 18, color: "#04140A" }),
+      icNavHome: this.ic("pizza", { size: 22, color: navColor("home") }),
+      icNavPedidos: this.ic("receipt", { size: 22, color: navColor("pedidos") }),
+      icNavCart: this.ic("cart", { size: 22, color: navColor("cart") }),
+      icEmptyCart: this.ic("pizza", { size: 40, color: "#2FD171" }),
+      icEmptyPedidos: this.ic("receipt", { size: 40, color: "#2FD171" }),
+      icDelivery: this.ic("bike", { size: 22, color: "#2FD171" }),
+      icRetirar: this.ic("store", { size: 22, color: "#2FD171" }),
+      icStar: this.ic("star", { size: 11, color: "#FFC53D", fill: "#FFC53D" }),
+      icStarSm: this.ic("star", { size: 12, color: "#FFC53D", fill: "#FFC53D" }),
+    };
+
+    return {
+      ...IC,
+      isHome: st.view === "home", isCart: st.view === "cart", isCheckout: st.view === "checkout", isPedidos: st.view === "pedidos",
+      isGrid: st.view === "home" && st.variant !== 2, isList: st.view === "home" && st.variant === 2,
+      menuTitulo: q ? "Resultados da busca" : (st.variant === 2 ? "Escolha rápida" : "Cardápio"),
+      buscaValue: st.busca, onBusca: this.setBusca, onClearBusca: this.clearBusca,
+      hasBusca: q.length > 0, notBusca: q.length === 0, semResultados: q.length > 0 && sabores.length === 0,
+      navHome: () => this.go("home"), navPedidos: () => this.go("pedidos"), navCart: () => this.go("cart"),
+      navHomeColor: navColor("home"), navPedidosColor: navColor("pedidos"), navCartColor: navColor("cart"),
+      hasCart: cartCount > 0, cartCount, cartItensLabel: cartCount === 1 ? "item" : "itens",
+      showCartBar: st.view === "home" && cartCount > 0,
+      cartSubtotalFmt: this.fmt(subtotal),
+      variants, filtros, combos, sabores,
+
+      cartEmpty: st.cart.length === 0, cartHasItems: st.cart.length > 0, cartItems,
+      onCheckout: () => this.go("checkout"), onBackCart: () => this.go("cart"),
+
+      chk: { nome: mkField("nome"), tel: mkField("tel"), rua: mkField("rua"), numero: mkField("numero"), bairro: mkField("bairro"), cidade: mkField("cidade") },
+      onModoDelivery: () => this.setModo("delivery"), onModoRetirada: () => this.setModo("retirada"),
+      modoDeliveryStyle: modoBtn(chk.modo === "delivery"), modoRetiradaStyle: modoBtn(chk.modo === "retirada"),
+      showAddress: chk.modo === "delivery", pagamentos,
+      taxaFmt: this.fmt(this.TAXA),
+      checkoutSubtotalFmt: this.fmt(subtotal), checkoutTaxaFmt: taxa === 0 ? "Grátis" : this.fmt(taxa),
+      showDesconto: desconto > 0, checkoutDescontoFmt: "− " + this.fmt(desconto), checkoutTotalFmt: this.fmt(total),
+      onConfirm: this.confirmarPedido,
+      confirmStyle: { marginTop: "14px", width: "100%", background: valido ? "#2FD171" : "rgba(47,209,113,.35)", color: "#04140A", border: "none", borderRadius: "14px", padding: "14px", fontWeight: 800, fontSize: "15px", cursor: valido ? "pointer" : "not-allowed" },
+
+      pedidosEmpty: st.pedidos.length === 0, pedidosHas: st.pedidos.length > 0, pedidos,
+
+      stop: (e) => e.stopPropagation(),
+      splash: st.splash, splashFade: !!st.splashFade, introRef: this.introRef,
+      onEndSplash: this.endSplash,
+      splashOverlayStyle: { position: "fixed", top: 0, left: "50%", transform: "translateX(-50%)", width: "100%", maxWidth: "480px", height: "100dvh", zIndex: 200, background: "#0a0a0a", display: "flex", alignItems: "center", justifyContent: "center", opacity: st.splashFade ? 0 : 1, transition: "opacity .6s ease", pointerEvents: st.splashFade ? "none" : "auto" },
+      carouselRef: this.carRef, onCarPause: this.pauseCar, onCarResume: this.resumeCar, onCarResumeSoon: this.resumeCarSoon,
+      statusLabel: aberto ? "Aberto agora" : "Fechado",
+      statusSub: aberto ? "Fecha às 23h" : (_dia === 2 ? "Fechado às terças" : "Abre às 18h"),
+      statusPillStyle: { display: "inline-flex", alignItems: "center", gap: "6px", background: aberto ? "rgba(47,209,113,.18)" : "rgba(255,90,77,.18)", color: aberto ? "#2FD171" : "#ff8a7d", border: "1px solid " + (aberto ? "rgba(47,209,113,.45)" : "rgba(255,90,77,.45)"), borderRadius: "999px", padding: "5px 11px", fontSize: "12px", fontWeight: 700, whiteSpace: "nowrap" },
+      statusDotStyle: { width: "8px", height: "8px", borderRadius: "50%", flex: "0 0 auto", background: aberto ? "#2FD171" : "#ff8a7d", boxShadow: aberto ? "0 0 0 3px rgba(47,209,113,.25)" : "none" },
+      icClock: this.ic("clock", { size: 14, color: "#cfe0d6" }),
+      icStar: this.ic("star", { size: 14, color: "#FFC53D", fill: "#FFC53D" }),
+      icBike: this.ic("bike", { size: 15, color: "#fff" }),
+      icPinHero: this.ic("pin", { size: 14, color: "#2FD171" }),
+      horarioTexto: "Quarta a segunda · 18h às 23h",
+      localTexto: "Rua Professor Sud Menucci, 499-A",
+      onCarouselDown: this.onCarouselDown,
+      addrOpen: st.addrOpen, onOpenAddr: this.openAddr, onCloseAddr: this.closeAddr, onSaveAddr: this.saveAddr,
+      headerEndereco: st.endereco.rua + ", " + st.endereco.numero,
+      addr: { rua: af("rua"), numero: af("numero"), bairro: af("bairro"), cidade: af("cidade"), ref: af("ref") },
+      addrSaveStyle: { width: "100%", background: addrValido ? "#2FD171" : "rgba(47,209,113,.35)", color: "#04140A", border: "none", borderRadius: "14px", padding: "14px", fontWeight: 800, fontSize: "15px", cursor: addrValido ? "pointer" : "not-allowed" },
+      ...builderVals,
+    };
+  }
+}
+</script>
+
+
+</body></html>

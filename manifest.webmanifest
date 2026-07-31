@@ -1,0 +1,20 @@
+{
+  "name": "Gringo Pizzaria",
+  "short_name": "Gringo",
+  "description": "Cardápio e pedidos da Gringo Pizzaria. Monte sua pizza e acompanhe seu pedido. Pagamento na entrega ou retirada.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "lang": "pt-BR",
+  "background_color": "#070F0A",
+  "theme_color": "#070F0A",
+  "categories": ["food", "shopping"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
